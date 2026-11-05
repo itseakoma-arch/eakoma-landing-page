@@ -1,0 +1,2943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eakoma | Say Trackstar — Official Artist Hub</title>
+  <meta name="description" content="Official links, top streamed Audiomack songs, and streaming hub for Eakoma — Global Ambassador Of Christ • Say Trackstar.">
+  <meta name="theme-color" content="#040711">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23040711%22 stroke=%22%2300d4ff%22 stroke-width=%228%22/><text x=%2250%22 y=%2265%22 font-size=%2242%22 font-family=%22sans-serif%22 font-weight=%22900%22 fill=%22%23ffd166%22 text-anchor=%22middle%22>E</text></svg>">
+
+  <style>
+    /* =========================================================
+       2026 NEXT-GEN STADIUM AURORA & HOLOGRAPHIC GOLD THEME
+       EAKOMA • SAY TRACKSTAR
+       ========================================================= */
+    :root {
+      --bg-deep: #040711;
+      --bg-elevated: #081022;
+      --bg-card: rgba(10, 19, 38, 0.74);
+      --bg-card-hover: rgba(15, 29, 58, 0.92);
+      --bg-glass: rgba(12, 24, 48, 0.65);
+
+      --accent-blue: #0066ff;
+      --accent-cyan: #00e5ff;
+      --accent-sky: #38bdf8;
+      --accent-gold: #ffd166;
+      --accent-gold-deep: #f59e0b;
+      --audiomack-orange: #ffa200;
+      --spotify-green: #1ed760;
+
+      --text-main: #ffffff;
+      --text-sub: #b6cce8;
+      --text-muted: #6e88ab;
+
+      --border-subtle: rgba(56, 189, 248, 0.18);
+      --border-glow: rgba(0, 229, 255, 0.48);
+
+      --radius-btn: 18px;
+      --radius-card: 26px;
+
+      --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --font-mono: 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+      /* Modern Web Guidance: Color space interpolation tokens with fallback */
+      --in-oklab: ;
+      --in-oklch: ;
+
+      /* Physics-based spring easing (Baseline linear()) */
+      --spring-easing: linear(0, 0.016 0.5%, 0.06 1%, 0.226 2%, 1.06 5.4%, 1.21 6.8%, 1.24 7.8%, 1.18 9.4%, 0.97 14%, 0.92 16.5%, 0.95 19.5%, 1.02 24.5%, 1.01 28%, 0.99 34%, 1);
+    }
+
+    @supports (background: linear-gradient(in oklab, white, black)) {
+      :root {
+        --in-oklab: in oklab;
+        --in-oklch: in oklch;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      color-scheme: dark;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-display);
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 1.1rem 4.5rem 1.1rem;
+      position: relative;
+      overflow-x: hidden;
+      width: 100%;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Multi-layered dynamic stadium spotlight aura */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 130vw;
+      height: 120vh;
+      background:
+        radial-gradient(circle at 50% 10%, rgba(0, 102, 255, 0.30) 0%, rgba(0, 229, 255, 0.12) 25%, rgba(255, 162, 0, 0.06) 45%, rgba(4, 7, 17, 0.92) 70%, var(--bg-deep) 95%),
+        radial-gradient(circle at 85% 80%, rgba(255, 209, 102, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+      animation: auroraPulse 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes auroraPulse {
+      0% { transform: translateX(-50%) scale(1) rotate(0deg); opacity: 0.85; }
+      100% { transform: translateX(-50%) scale(1.08) rotate(1.5deg); opacity: 1; }
+    }
+
+    /* Subtle cyber-grid & starlight matrix */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(rgba(0, 229, 255, 0.09) 1px, transparent 1px),
+        radial-gradient(rgba(255, 209, 102, 0.05) 1px, transparent 1px);
+      background-size: 36px 36px, 72px 72px;
+      background-position: 0 0, 18px 18px;
+      pointer-events: none;
+      z-index: 0;
+      mask-image: radial-gradient(circle at 50% 35%, black 30%, transparent 90%);
+      -webkit-mask-image: radial-gradient(circle at 50% 35%, black 30%, transparent 90%);
+    }
+
+    /* Interactive Stage Particle Canvas */
+    #stageCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.75;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 580px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1.55rem;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =========================================================
+       TOP FLOATING UTILITY BAR (SAY TRACKSTAR BRAND + QR + SHARE)
+       ========================================================= */
+    .top-utility-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1.25rem;
+      animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .brand-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.44rem 0.95rem;
+      background: rgba(8, 18, 38, 0.82);
+      border: 1px solid rgba(255, 209, 102, 0.38);
+      border-radius: 999px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45), 0 0 18px rgba(255, 209, 102, 0.15);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+      box-shadow: 0 0 10px var(--accent-gold);
+      animation: livePulse 2s ease-in-out infinite;
+    }
+
+    @keyframes livePulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.35); opacity: 0.55; }
+    }
+
+    .utility-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .icon-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      height: 36px;
+      padding: 0 0.85rem;
+      border-radius: 999px;
+      background: rgba(10, 20, 40, 0.75);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: transform 0.25s ease-out, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+      transition-timing-function: var(--spring-easing);
+    }
+
+    .icon-pill-btn:hover {
+      transform: translateY(-2px) scale(1.04);
+      border-color: var(--accent-cyan);
+      background: rgba(16, 34, 68, 0.92);
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+    }
+
+    .icon-pill-btn svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+    }
+
+    /* =========================================================
+       HOLOGRAPHIC 3D CIRCULAR PROFILE HEADER
+       ========================================================= */
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-top: 0.25rem;
+      animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+    }
+
+    .avatar-stage {
+      position: relative;
+      width: clamp(195px, 40vw, 232px);
+      height: clamp(195px, 40vw, 232px);
+      margin-bottom: 1.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 900px;
+    }
+
+    .avatar-stage::before,
+    .avatar-stage::after {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 229, 255, 0.28);
+      pointer-events: none;
+      animation: sonicRing 4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    }
+
+    .avatar-stage::after {
+      inset: -24px;
+      border-color: rgba(255, 209, 102, 0.16);
+      animation-delay: 2s;
+    }
+
+    @keyframes sonicRing {
+      0% { transform: scale(0.92); opacity: 0.75; }
+      70% { transform: scale(1.08); opacity: 0.15; }
+      100% { transform: scale(1.12); opacity: 0; }
+    }
+
+    .avatar-ring {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      padding: 5px;
+      background: linear-gradient(135deg var(--in-oklch), var(--accent-cyan), var(--accent-blue), var(--accent-gold), var(--accent-cyan));
+      background-size: 250% 250%;
+      animation: holoFlow 6s ease infinite;
+      box-shadow:
+        0 0 45px rgba(0, 229, 255, 0.45),
+        0 0 80px rgba(0, 102, 255, 0.25),
+        0 18px 40px rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.4s ease-out, box-shadow 0.4s ease;
+      transition-timing-function: var(--spring-easing);
+      cursor: pointer;
+    }
+
+    @keyframes holoFlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .avatar-ring:hover {
+      transform: scale(1.045) translateY(-3px);
+      box-shadow:
+        0 0 60px rgba(0, 229, 255, 0.72),
+        0 0 95px rgba(255, 209, 102, 0.35),
+        0 22px 50px rgba(0, 0, 0, 0.9);
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 25%;
+      display: block;
+      border: 4px solid var(--bg-deep);
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    /* Global Ambassador Of Christ Badge */
+    .verified-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(90deg var(--in-oklab), rgba(0, 102, 255, 0.24), rgba(0, 229, 255, 0.14));
+      border: 1px solid rgba(0, 229, 255, 0.48);
+      color: var(--accent-cyan);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.42rem 1.1rem;
+      border-radius: 999px;
+      margin-bottom: 0.55rem;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 6px 24px rgba(0, 102, 255, 0.3);
+      user-select: none;
+      cursor: pointer;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .verified-badge:hover {
+      transform: scale(1.03);
+      border-color: var(--accent-gold);
+    }
+
+    .verified-icon {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+      filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.7));
+    }
+
+    /* Artist Display Title */
+    .artist-title {
+      font-size: clamp(3.1rem, 10.5vw, 4.8rem);
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      line-height: 0.98;
+      text-transform: uppercase;
+      background: linear-gradient(180deg var(--in-oklab), #ffffff 0%, #e2f1ff 65%, #9ec5ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 6px 28px rgba(0, 102, 255, 0.55));
+      margin-bottom: 0.45rem;
+    }
+
+    /* Animated Equalizer + Genre Tagline */
+    .tagline-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.3rem 0.95rem;
+      border-radius: 999px;
+      background: rgba(255, 209, 102, 0.08);
+      border: 1px solid rgba(255, 209, 102, 0.24);
+      margin-bottom: 0.5rem;
+    }
+
+    .genre-tagline {
+      font-size: 0.92rem;
+      color: var(--accent-gold);
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-shadow: 0 0 18px rgba(255, 209, 102, 0.45);
+    }
+
+    .eq-visualizer {
+      display: inline-flex;
+      align-items: flex-end;
+      gap: 2.5px;
+      height: 13px;
+    }
+
+    .eq-visualizer span {
+      width: 2.5px;
+      background: linear-gradient(to top, var(--accent-cyan), var(--accent-gold));
+      border-radius: 2px;
+      animation: eqDance 1.1s ease-in-out infinite;
+    }
+
+    .eq-visualizer span:nth-child(1) { height: 7px; animation-delay: 0.0s; }
+    .eq-visualizer span:nth-child(2) { height: 13px; animation-delay: 0.2s; }
+    .eq-visualizer span:nth-child(3) { height: 9px; animation-delay: 0.4s; }
+    .eq-visualizer span:nth-child(4) { height: 11px; animation-delay: 0.15s; }
+
+    @keyframes eqDance {
+      0%, 100% { transform: scaleY(0.35); opacity: 0.65; }
+      50% { transform: scaleY(1); opacity: 1; }
+    }
+
+    .trackstar-motto {
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-sub);
+      opacity: 0.88;
+    }
+
+    .trackstar-motto strong {
+      color: var(--accent-cyan);
+    }
+
+    /* =========================================================
+       SIMPLE & DOPE AUDIOMACK MOST-STREAMED SHORT PLAYER CARD
+       ========================================================= */
+    .audiomack-player-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 162, 0, 0.28);
+      border-radius: var(--radius-card);
+      padding: clamp(1rem, 3vw, 1.3rem);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      box-shadow:
+        0 22px 55px rgba(0, 0, 0, 0.72),
+        0 0 36px rgba(255, 162, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+    }
+
+    .audiomack-player-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg var(--in-oklch), var(--audiomack-orange), var(--accent-gold), var(--accent-cyan), var(--audiomack-orange));
+      background-size: 200% 100%;
+      animation: holoFlow 5s linear infinite;
+    }
+
+    .am-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .am-title-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .am-icon-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255, 162, 0, 0.16);
+      border: 1px solid rgba(255, 162, 0, 0.4);
+      color: var(--audiomack-orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .am-icon-badge svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .am-title {
+      font-size: 0.84rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .am-rank-pill {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.24rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(255, 162, 0, 0.14);
+      border: 1px solid rgba(255, 162, 0, 0.35);
+      color: var(--accent-gold);
+    }
+
+    /* Compact Embedded Audiomack Player */
+    .am-embed-box {
+      width: 100%;
+      height: 112px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #050a16;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      margin-bottom: 0.85rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+    }
+
+    .am-embed-box iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* Short Ranked Tracklist */
+    .am-tracklist {
+      display: flex;
+      flex-direction: column;
+      gap: 0.42rem;
+    }
+
+    .am-track-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.62rem 0.85rem;
+      border-radius: 13px;
+      background: rgba(6, 13, 28, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.22s ease;
+    }
+
+    .am-track-row:hover {
+      background: rgba(16, 30, 60, 0.88);
+      border-color: rgba(255, 162, 0, 0.45);
+      transform: translateX(3px);
+    }
+
+    .am-track-row.active {
+      background: linear-gradient(90deg var(--in-oklab), rgba(255, 162, 0, 0.18), rgba(0, 102, 255, 0.14));
+      border-color: var(--audiomack-orange);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4), 0 0 18px rgba(255, 162, 0, 0.16);
+    }
+
+    .am-track-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .am-track-rank {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      width: 22px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .am-track-row.active .am-track-rank {
+      color: var(--audiomack-orange);
+    }
+
+    .am-play-indicator {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .am-track-row:hover .am-play-indicator,
+    .am-track-row.active .am-play-indicator {
+      background: var(--audiomack-orange);
+      color: #050914;
+      transform: scale(1.06);
+    }
+
+    .am-play-indicator svg {
+      width: 13px;
+      height: 13px;
+      fill: currentColor;
+      margin-left: 1px;
+    }
+
+    .am-track-info {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .am-track-name {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.2;
+    }
+
+    .am-track-tag {
+      font-size: 0.69rem;
+      font-weight: 600;
+      color: var(--text-sub);
+      opacity: 0.8;
+    }
+
+    .am-track-right {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex-shrink: 0;
+    }
+
+    .am-stream-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      background: rgba(255, 209, 102, 0.1);
+      border: 1px solid rgba(255, 209, 102, 0.22);
+      padding: 0.18rem 0.5rem;
+      border-radius: 999px;
+    }
+
+    .am-open-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-sub);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .am-open-link:hover {
+      background: rgba(255, 162, 0, 0.2);
+      border-color: var(--audiomack-orange);
+      color: #fff;
+    }
+
+    .am-open-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* =========================================================
+       SECTION HEADER DIVIDER
+       ========================================================= */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      width: 100%;
+      margin: 0.1rem 0 -0.35rem 0;
+    }
+
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.32), transparent);
+    }
+
+    .section-divider span {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-sub);
+    }
+
+    /* =========================================================
+       INTERACTIVE SPOTLIGHT ACTION BUTTONS (WITH STAGGER)
+       ========================================================= */
+    .links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.88rem;
+      width: 100%;
+    }
+
+    @keyframes cardReveal {
+      from { opacity: 0; transform: translateY(16px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Modern Web Guidance: dynamic-sibling-animations with fallback */
+    #linksList > .link-btn {
+      --stagger-time: 0.065s;
+      animation: cardReveal 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: calc(var(--sibling-index, 1) * var(--stagger-time));
+      animation-delay: calc(sibling-index() * var(--stagger-time));
+    }
+
+    .link-btn {
+      --brand-color: var(--accent-cyan);
+      --mouse-x: 50%;
+      --mouse-y: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 1.02rem 1.35rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-btn);
+      color: var(--text-main);
+      text-decoration: none;
+      font-family: inherit;
+      text-align: left;
+      cursor: pointer;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      overflow: hidden;
+      isolation: isolate;
+      transition: transform 0.35s ease-out, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      transition-timing-function: var(--spring-easing);
+    }
+
+    .link-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        280px circle at var(--mouse-x) var(--mouse-y),
+        color-mix(in oklab, var(--brand-color) 24%, transparent),
+        transparent 75%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .link-btn:hover::before,
+    .link-btn:focus-visible::before {
+      opacity: 1;
+    }
+
+    .link-btn:hover {
+      background: var(--bg-card-hover);
+      transform: translateY(-3px) scale(1.012);
+      border-color: color-mix(in oklab, var(--brand-color) 65%, white);
+      box-shadow:
+        0 14px 32px rgba(0, 0, 0, 0.55),
+        0 0 28px color-mix(in oklab, var(--brand-color) 28%, transparent);
+    }
+
+    .link-btn:active {
+      transform: translateY(0) scale(0.99);
+    }
+
+    .link-left {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      min-width: 0;
+    }
+
+    .link-icon-wrap {
+      width: 46px;
+      height: 46px;
+      border-radius: 13px;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--brand-color);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease-out, background 0.3s ease, border-color 0.3s ease;
+      transition-timing-function: var(--spring-easing);
+    }
+
+    .link-btn:hover .link-icon-wrap {
+      transform: scale(1.08) rotate(-3deg);
+      background: color-mix(in oklab, var(--brand-color) 16%, rgba(10, 20, 40, 0.9));
+      border-color: color-mix(in oklab, var(--brand-color) 50%, transparent);
+    }
+
+    .link-icon-wrap svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+      filter: drop-shadow(0 0 8px color-mix(in oklab, var(--brand-color) 45%, transparent));
+    }
+
+    .link-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.12rem;
+      min-width: 0;
+    }
+
+    .link-label {
+      font-size: 1.06rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .link-subtext {
+      font-size: 0.77rem;
+      font-weight: 500;
+      color: var(--text-sub);
+      opacity: 0.82;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .link-right {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-shrink: 0;
+    }
+
+    .cta-chip {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.68rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-sub);
+      transition: all 0.25s ease;
+    }
+
+    .link-btn:hover .cta-chip {
+      background: color-mix(in oklab, var(--brand-color) 20%, transparent);
+      border-color: color-mix(in oklab, var(--brand-color) 55%, transparent);
+      color: #ffffff;
+    }
+
+    .badge-coming-soon {
+      background: rgba(30, 215, 96, 0.15);
+      color: var(--spotify-green);
+      border: 1px solid rgba(30, 215, 96, 0.45);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.34rem 0.8rem;
+      border-radius: 999px;
+      transition: all 0.25s ease;
+    }
+
+    .link-btn.notified .badge-coming-soon {
+      background: var(--spotify-green);
+      color: #04140a;
+      box-shadow: 0 0 18px rgba(30, 215, 96, 0.5);
+    }
+
+    /* Platform Brand Color Variables */
+    .platform-spotify { --brand-color: #1ed760; }
+    .platform-youtube { --brand-color: #ff1f3d; }
+    .platform-audiomack { --brand-color: #ffa200; }
+    .platform-instagram { --brand-color: #ff2a85; }
+    .platform-tiktok { --brand-color: #00f2fe; }
+    .platform-facebook { --brand-color: #1877f2; }
+
+    .arrow-icon {
+      width: 19px;
+      height: 19px;
+      color: var(--text-sub);
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+
+    .link-btn:hover .arrow-icon {
+      color: var(--brand-color);
+      transform: translateX(4px);
+    }
+
+    /* =========================================================
+       FAN HYPE / BLESSINGS & SHARE CARD (STARTS AT ZERO)
+       ========================================================= */
+    .fan-hype-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      width: 100%;
+      margin-top: 0.15rem;
+    }
+
+    .hype-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.95rem 1rem;
+      border-radius: 16px;
+      background: rgba(12, 24, 48, 0.68);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 800;
+      cursor: pointer;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: transform 0.3s ease-out, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+      transition-timing-function: var(--spring-easing);
+    }
+
+    .hype-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      border-color: var(--accent-gold);
+      background: rgba(20, 36, 68, 0.88);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45), 0 0 20px rgba(255, 209, 102, 0.2);
+    }
+
+    .hype-count-pill {
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(255, 209, 102, 0.16);
+      border: 1px solid rgba(255, 209, 102, 0.35);
+      color: var(--accent-gold);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    /* =========================================================
+       FOOTER WITH "SAY TRACKSTAR" BRANDING
+       (TRIPLE-TAP TO UNLOCK PRIVATE 24H ANALYTICS VAULT)
+       ========================================================= */
+    footer {
+      text-align: center;
+      margin-top: 1rem;
+      padding-top: 1.55rem;
+      border-top: 1px solid rgba(56, 189, 248, 0.12);
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.95rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      color: var(--text-main);
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 0.3rem 0.85rem;
+      border-radius: 999px;
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+
+    .footer-brand:hover {
+      color: var(--accent-cyan);
+      background: rgba(0, 229, 255, 0.06);
+    }
+
+    .footer-brand-badge {
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      background: rgba(255, 209, 102, 0.14);
+      border: 1px solid rgba(255, 209, 102, 0.38);
+      color: var(--accent-gold);
+    }
+
+    .footer-tagline {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* Toast Notification */
+    .toast-banner {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(8, 18, 38, 0.95);
+      border: 1px solid var(--accent-cyan);
+      color: #fff;
+      padding: 0.7rem 1.25rem;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.75), 0 0 25px rgba(0, 229, 255, 0.35);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .toast-banner.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* =========================================================
+       NATIVE TOP-LAYER DIALOGS (PRIVATE 24H ANALYTICS & QR PASS)
+       Modern Web Guidance: dialog, light-dismiss-a-dialog,
+       animate-to-from-top-layer
+       ========================================================= */
+    dialog:modal {
+      overscroll-behavior: contain;
+    }
+    dialog::backdrop {
+      overflow: hidden;
+      overscroll-behavior: contain;
+      background-color: rgba(2, 5, 14, 0);
+      backdrop-filter: blur(0px);
+      transition-property: background-color, backdrop-filter, display, overlay;
+      transition-duration: 0.28s;
+      transition-timing-function: ease-out;
+      transition-behavior: allow-discrete;
+    }
+
+    dialog {
+      margin: auto;
+      border: 1px solid rgba(0, 229, 255, 0.32);
+      border-radius: 24px;
+      background: rgba(7, 14, 29, 0.96);
+      color: var(--text-main);
+      padding: 0;
+      width: min(94vw, 600px);
+      max-height: 88vh;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.92), 0 0 50px rgba(0, 229, 255, 0.22);
+      opacity: 0;
+      transform: scale(0.92) translateY(12px);
+      transition-property: opacity, transform, display, overlay;
+      transition-duration: 0.28s;
+      transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      transition-behavior: allow-discrete;
+    }
+
+    :is(dialog[open]):where(:not([data-closing])) {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+
+      @starting-style {
+        opacity: 0;
+        transform: scale(0.92) translateY(12px);
+      }
+
+      &::backdrop {
+        background-color: rgba(2, 6, 16, 0.78);
+        backdrop-filter: blur(10px);
+
+        @starting-style {
+          background-color: rgba(2, 6, 16, 0);
+          backdrop-filter: blur(0px);
+        }
+      }
+    }
+
+    .vault-container {
+      padding: clamp(1.2rem, 4vw, 1.75rem);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      max-height: 86vh;
+      overflow-y: auto;
+    }
+
+    .vault-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.16);
+      padding-bottom: 1rem;
+    }
+
+    .vault-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .vault-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+    }
+
+    .vault-title {
+      font-size: 1.35rem;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      color: #fff;
+    }
+
+    .vault-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+    }
+
+    .vault-close-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--text-main);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .vault-close-btn:hover {
+      background: rgba(255, 42, 95, 0.22);
+      border-color: #ff2a5f;
+      transform: scale(1.06);
+    }
+
+    /* PIN Lock Screen inside Vault */
+    .pin-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+      padding: 1.5rem 0.5rem;
+    }
+
+    .pin-input-row {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pin-input {
+      width: 160px;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      background: rgba(2, 6, 16, 0.9);
+      border: 1px solid rgba(0, 229, 255, 0.4);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.3em;
+      text-align: center;
+    }
+
+    .pin-submit-btn {
+      padding: 0.78rem 1.25rem;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      border: none;
+      color: #020813;
+      font-weight: 800;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+
+    .pin-error {
+      color: #ff4d6d;
+      font-size: 0.8rem;
+      font-weight: 700;
+      min-height: 1.2em;
+    }
+
+    /* Window Filter Tabs */
+    .window-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.4rem;
+      background: rgba(3, 8, 19, 0.85);
+      padding: 0.35rem;
+      border-radius: 14px;
+      border: 1px solid rgba(56, 189, 248, 0.16);
+    }
+
+    .window-tab {
+      padding: 0.5rem 0.4rem;
+      border-radius: 10px;
+      border: none;
+      background: transparent;
+      color: var(--text-sub);
+      font-family: inherit;
+      font-size: 0.74rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .window-tab.active {
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.22), rgba(0, 102, 255, 0.32));
+      color: #fff;
+      border: 1px solid rgba(0, 229, 255, 0.45);
+      box-shadow: 0 4px 14px rgba(0, 102, 255, 0.25);
+    }
+
+    /* 4 KPI Summary Cards */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    @media (min-width: 500px) {
+      .kpi-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .kpi-card {
+      background: rgba(12, 24, 48, 0.65);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      border-radius: 16px;
+      padding: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .kpi-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-sub);
+    }
+
+    .kpi-value {
+      font-family: var(--font-mono);
+      font-size: 1.55rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+    }
+
+    .kpi-sub {
+      font-size: 0.7rem;
+      color: var(--accent-gold);
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Per-Link Breakdown Table */
+    .vault-section-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-gold);
+      margin-bottom: 0.55rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .link-stats-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+    }
+
+    .link-stats-table th {
+      text-align: left;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      padding: 0.45rem 0.5rem;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.14);
+    }
+
+    .link-stats-table td {
+      padding: 0.62rem 0.5rem;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.08);
+      vertical-align: middle;
+    }
+
+    .link-stat-name {
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .stat-bar-track {
+      width: 100%;
+      height: 7px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 0.28rem;
+    }
+
+    .stat-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-gold));
+      transition: width 0.4s ease;
+    }
+
+    .stat-count-cell {
+      font-family: var(--font-mono);
+      font-weight: 800;
+      text-align: right;
+      color: var(--accent-cyan);
+    }
+
+    .stat-last-cell {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* 24-Hour Hourly Sparkline Chart */
+    .hourly-chart-box {
+      background: rgba(4, 10, 22, 0.75);
+      border: 1px solid rgba(56, 189, 248, 0.14);
+      border-radius: 16px;
+      padding: 0.9rem;
+    }
+
+    .hourly-bars {
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      align-items: end;
+      gap: 3px;
+      height: 68px;
+      padding-top: 0.5rem;
+    }
+
+    .hour-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      height: 100%;
+      gap: 4px;
+    }
+
+    .hour-bar {
+      width: 100%;
+      min-height: 3px;
+      border-radius: 3px 3px 0 0;
+      background: linear-gradient(to top, var(--accent-blue), var(--accent-cyan));
+      transition: height 0.3s ease;
+    }
+
+    .hour-bar.has-clicks {
+      background: linear-gradient(to top, var(--accent-cyan), var(--accent-gold));
+      box-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+    }
+
+    .hourly-axis {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+      font-family: var(--font-mono);
+    }
+
+    /* Recent Activity Feed */
+    .activity-feed {
+      max-height: 145px;
+      overflow-y: auto;
+      background: rgba(4, 10, 22, 0.75);
+      border: 1px solid rgba(56, 189, 248, 0.14);
+      border-radius: 14px;
+      padding: 0.55rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.76rem;
+    }
+
+    .feed-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.3rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-sub);
+    }
+
+    .feed-item:last-child {
+      border-bottom: none;
+    }
+
+    .feed-time {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* Vault Action Toolbar */
+    .vault-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      padding-top: 0.4rem;
+      border-top: 1px solid rgba(56, 189, 248, 0.14);
+    }
+
+    .vault-action-btn {
+      flex: 1 1 auto;
+      padding: 0.65rem 0.9rem;
+      border-radius: 12px;
+      background: rgba(16, 32, 62, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.76rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .vault-action-btn:hover {
+      border-color: var(--accent-cyan);
+      background: rgba(0, 102, 255, 0.28);
+    }
+
+    .vault-action-btn.primary {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      color: #020813;
+      border: none;
+    }
+
+    .vault-action-btn.danger:hover {
+      border-color: #ff4d6d;
+      background: rgba(255, 77, 109, 0.18);
+      color: #ff8fa3;
+    }
+
+    /* QR Pass Modal Content */
+    .qr-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+      padding: 0.5rem 0;
+    }
+
+    .qr-canvas-wrap {
+      background: #ffffff;
+      padding: 14px;
+      border-radius: 20px;
+      box-shadow: 0 0 35px rgba(0, 229, 255, 0.4);
+      display: inline-flex;
+    }
+
+    /* Respect reduced-motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.05s !important;
+      }
+      #linksList > .link-btn,
+      .avatar-ring,
+      .icon-pill-btn,
+      .hype-btn {
+        animation: none !important;
+        transition: none !important;
+      }
+      dialog {
+        transform: none;
+        transition-duration: 0.1s;
+      }
+      @starting-style {
+        :is(dialog[open]):where(:not([data-closing])) {
+          transform: none;
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Stage Light & Particle Canvas -->
+  <canvas id="stageCanvas" aria-hidden="true"></canvas>
+
+  <div class="wrapper">
+
+    <!-- 0. TOP FLOATING UTILITY BAR WITH "SAY TRACKSTAR" BRANDING -->
+    <div class="top-utility-bar">
+      <div class="brand-status-pill">
+        <span class="status-dot"></span>
+        <span>⚡ Say Trackstar</span>
+      </div>
+      <div class="utility-actions">
+        <button type="button" class="icon-pill-btn" id="openQrBtn" aria-label="Show Artist QR Pass">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v2h-3v-2zm-3 0h2v3h-2v-3zm3 3h3v2h-3v-2zm-3 3h2v2h-2v-2zm3 0h3v2h-3v-2z"/>
+          </svg>
+          <span>QR Pass</span>
+        </button>
+        <button type="button" class="icon-pill-btn" id="topShareBtn" aria-label="Share Official Page">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/>
+          </svg>
+          <span>Share</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 1. HOLOGRAPHIC 3D CIRCULAR PROFILE HEADER -->
+    <header class="profile-header">
+      <div class="avatar-stage" id="avatarStage">
+        <div class="avatar-ring" id="avatarRing">
+          <img
+            src="hero.jpg"
+            alt="Eakoma Official Profile Picture"
+            class="avatar-img"
+            width="230"
+            height="230"
+            fetchpriority="high">
+        </div>
+      </div>
+
+      <!-- Global Ambassador Of Christ (Hold 1.1s for Private 24h Analytics) -->
+      <div class="verified-badge" id="verifiedBadge" title="Official Verified Artist">
+        <svg class="verified-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+        <span>Global Ambassador Of Christ</span>
+      </div>
+
+      <!-- Artist Name -->
+      <h1 class="artist-title">Eakoma</h1>
+
+      <!-- Equalizer + Genre Tagline -->
+      <div class="tagline-lockup">
+        <div class="eq-visualizer" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="genre-tagline">A New Wave Of Gospel</div>
+        <div class="eq-visualizer" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="trackstar-motto"><strong>SAY TRACKSTAR</strong> &bull; Small With A Big God</div>
+    </header>
+
+    <!-- 2. AUDIOMACK MOST-STREAMED SHORT PLAYER & TRACKLIST -->
+    <section class="audiomack-player-card" aria-label="Top Streamed Songs on Audiomack">
+      <div class="am-header">
+        <div class="am-title-group">
+          <div class="am-icon-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+            </svg>
+          </div>
+          <span class="am-title">Audiomack Top Streamed</span>
+        </div>
+        <span class="am-rank-pill">Most Streamed &bull; Tap Song</span>
+      </div>
+
+      <!-- Compact Live Audiomack Embed Player (Switches when any track below is tapped) -->
+      <div class="am-embed-box">
+        <iframe
+          id="audiomackEmbed"
+          src="https://audiomack.com/embed/iameakoma/song/alpha-hour?background=1"
+          scrolling="no"
+          title="Eakoma Audiomack Song Player"
+          allow="autoplay; encrypted-media">
+        </iframe>
+      </div>
+
+      <!-- Short Ranked List of Eakoma's Most-Streamed Audiomack Songs -->
+      <div class="am-tracklist" id="amTracklist" role="list">
+
+        <!-- #1 Most Streamed: Alpha Hour -->
+        <div class="am-track-row active" role="listitem" tabindex="0"
+             data-slug="alpha-hour"
+             data-track-id="song_alpha_hour"
+             data-track-name="Audiomack: #1 Alpha Hour">
+          <div class="am-track-left">
+            <span class="am-track-rank">#1</span>
+            <div class="am-play-indicator" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            </div>
+            <div class="am-track-info">
+              <span class="am-track-name">Alpha Hour</span>
+              <span class="am-track-tag">#1 Most Streamed &bull; Eakoma</span>
+            </div>
+          </div>
+          <div class="am-track-right">
+            <span class="am-stream-badge">🔥 #1 Hit</span>
+            <a href="https://audiomack.com/iameakoma/song/alpha-hour" target="_blank" rel="noopener noreferrer" class="am-open-link" title="Open Alpha Hour on Audiomack" aria-label="Open Alpha Hour on Audiomack">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- #2 Most Streamed: That's The Feeling -->
+        <div class="am-track-row" role="listitem" tabindex="0"
+             data-slug="thats-the-feeling"
+             data-track-id="song_thats_the_feeling"
+             data-track-name="Audiomack: #2 That's The Feeling">
+          <div class="am-track-left">
+            <span class="am-track-rank">#2</span>
+            <div class="am-play-indicator" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            </div>
+            <div class="am-track-info">
+              <span class="am-track-name">That&rsquo;s The Feeling</span>
+              <span class="am-track-tag">Top Streamed Anthem &bull; Eakoma</span>
+            </div>
+          </div>
+          <div class="am-track-right">
+            <span class="am-stream-badge">⚡ #2</span>
+            <a href="https://audiomack.com/iameakoma/song/thats-the-feeling" target="_blank" rel="noopener noreferrer" class="am-open-link" title="Open That's The Feeling on Audiomack" aria-label="Open That's The Feeling on Audiomack">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- #3 Most Streamed: Green Pastures -->
+        <div class="am-track-row" role="listitem" tabindex="0"
+             data-slug="green-pastures"
+             data-track-id="song_green_pastures"
+             data-track-name="Audiomack: #3 Green Pastures">
+          <div class="am-track-left">
+            <span class="am-track-rank">#3</span>
+            <div class="am-play-indicator" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            </div>
+            <div class="am-track-info">
+              <span class="am-track-name">Green Pastures</span>
+              <span class="am-track-tag">Psalm 23 Vibe &bull; Eakoma</span>
+            </div>
+          </div>
+          <div class="am-track-right">
+            <span class="am-stream-badge">👑 #3</span>
+            <a href="https://audiomack.com/iameakoma/song/green-pastures" target="_blank" rel="noopener noreferrer" class="am-open-link" title="Open Green Pastures on Audiomack" aria-label="Open Green Pastures on Audiomack">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- #4 Most Streamed: Said What I Said -->
+        <div class="am-track-row" role="listitem" tabindex="0"
+             data-slug="said-what-i-said"
+             data-track-id="song_said_what_i_said"
+             data-track-name="Audiomack: #4 Said What I Said">
+          <div class="am-track-left">
+            <span class="am-track-rank">#4</span>
+            <div class="am-play-indicator" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            </div>
+            <div class="am-track-info">
+              <span class="am-track-name">Said What I Said</span>
+              <span class="am-track-tag">Kingdom Boldness &bull; Eakoma</span>
+            </div>
+          </div>
+          <div class="am-track-right">
+            <span class="am-stream-badge">🔥 #4</span>
+            <a href="https://audiomack.com/iameakoma/song/said-what-i-said" target="_blank" rel="noopener noreferrer" class="am-open-link" title="Open Said What I Said on Audiomack" aria-label="Open Said What I Said on Audiomack">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- #5 Most Streamed: Start Of The Year -->
+        <div class="am-track-row" role="listitem" tabindex="0"
+             data-slug="start-of-the-year"
+             data-track-id="song_start_of_the_year"
+             data-track-name="Audiomack: #5 Start Of The Year">
+          <div class="am-track-left">
+            <span class="am-track-rank">#5</span>
+            <div class="am-play-indicator" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            </div>
+            <div class="am-track-info">
+              <span class="am-track-name">Start Of The Year</span>
+              <span class="am-track-tag">Afro-Gospel Anthem &bull; Eakoma</span>
+            </div>
+          </div>
+          <div class="am-track-right">
+            <span class="am-stream-badge">✨ #5</span>
+            <a href="https://audiomack.com/iameakoma/song/start-of-the-year" target="_blank" rel="noopener noreferrer" class="am-open-link" title="Open Start Of The Year on Audiomack" aria-label="Open Start Of The Year on Audiomack">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="section-divider"><span>Stream &amp; Connect Everywhere</span></div>
+
+    <!-- 3. THE 6 STREAMING & SOCIAL LINKS WITH 3D SPOTLIGHT & TRACKING -->
+    <nav class="links-list" id="linksList" aria-label="Social and Streaming Links">
+
+      <!-- 1. Spotify (Interactive Pre-Save / Notify On Drop) -->
+      <button type="button" class="link-btn platform-spotify" id="spotifyNotifyBtn" data-track-id="spotify" data-track-name="Spotify">
+        <div class="link-left">
+          <div class="link-icon-wrap">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.563.387-.857.207-2.35-1.435-5.308-1.76-8.792-.963-.335.077-.67-.133-.746-.468-.077-.334.132-.67.467-.746 3.808-.87 7.076-.505 9.72 1.113.295.18.388.563.208.857zm1.224-2.72c-.227.368-.711.484-1.08.257-2.69-1.654-6.79-2.133-9.972-1.168-.413.125-.853-.109-.978-.522-.125-.413.109-.853.522-.978 3.633-1.102 8.153-.57 11.251 1.332.369.227.484.71.257 1.079zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71c-.494.15-1.02-.13-1.17-.624-.15-.494.13-1.02.624-1.17 3.532-1.072 9.404-.868 13.115 1.335.445.264.59.84.327 1.285-.264.444-.84.59-1.284.327z"/>
+            </svg>
+          </div>
+          <div class="link-meta">
+            <span class="link-label">Spotify</span>
+            <span class="link-subtext" id="spotifySubtext">Catalog dropping soon &bull; Tap to get notified</span>
+          </div>
+        </div>
+        <div class="link-right">
+          <span class="badge-coming-soon" id="spotifyBadge">Coming Soon</span>
+        </div>
+      </button>
+
+      <!-- 2. YouTube -->
+      <a href="https://www.youtube.com/@iameakoma" target="_blank" rel="noopener noreferrer" class="link-btn platform-youtube" data-track-id="youtube" data-track-name="YouTube">
+        <div class="link-left">
+          <div class="link-icon-wrap">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </div>
+          <div class="link-meta">
+            <span class="link-label">YouTube</span>
+            <span class="link-subtext">Watch official music videos &amp; subscribe</span>
+          </div>
+        </div>
+        <div class="link-right">
+          <span class="cta-chip">Watch</span>
+          <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </div>
+      </a>
+
+      <!-- 3. Audiomack -->
+      <a href="https://audiomack.com/iameakoma" target="_blank" rel="noopener noreferrer" class="link-btn platform-audiomack" data-track-id="audiomack" data-track-name="Audiomack Profile">
+        <div class="link-left">
+          <div class="link-icon-wrap">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+            </svg>
+          </div>
+          <div class="link-meta">
+            <span class="link-label">Audiomack</span>
+            <span class="link-subtext">Follow @iameakoma &amp; stream full catalog</span>
+          </div>
+        </div>
+        <div class="link-right">
+          <span class="cta-chip">Stream</span>
+          <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </div>
+      </a>
+
+      <!-- 4. Instagram -->
+      <a href="https://www.instagram.com/iameakoma/" target="_blank" rel="noopener noreferrer" class="link-btn platform-instagram" data-track-id="instagram" data-track-name="Instagram">
+        <div class="link-left">
+          <div class="link-icon-wrap">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </div>
+          <div class="link-meta">
+            <span class="link-label">Instagram</span>
+            <span class="link-subtext">@iameakoma &bull; Reels, photos &amp; updates</span>
+          </div>
+        </div>
+        <div class="link-right">
+          <span class="cta-chip">Follow</span>
+          <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </div>
+      </a>
+
+      <!-- 5. TikTok -->
+      <a href="https://www.tiktok.com/@iameakoma" target="_blank" rel="noopener noreferrer" class="link-btn platform-tiktok" data-track-id="tiktok" data-track-name="TikTok">
+        <div class="link-left">
+          <div class="link-icon-wrap">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+            </svg>
+          </div>
+          <div class="link-meta">
+            <span class="link-label">TikTok</span>
+            <span class="link-subtext">@iameakoma &bull; Sound trends &amp; clips</span>
+          </div>
+        </div>
+        <div class="link-right">
+          <span class="cta-chip">Follow</span>
+          <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </div>
+      </a>
+
+      <!-- 6. Facebook -->
+      <a href="https://web.facebook.com/profile.php?id=61586498300616" target="_blank" rel="noopener noreferrer" class="link-btn platform-facebook" data-track-id="facebook" data-track-name="Facebook">
+        <div class="link-left">
+          <div class="link-icon-wrap">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </div>
+          <div class="link-meta">
+            <span class="link-label">Facebook</span>
+            <span class="link-subtext">Join the official ministry community</span>
+          </div>
+        </div>
+        <div class="link-right">
+          <span class="cta-chip">Connect</span>
+          <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </div>
+      </a>
+
+    </nav>
+
+    <!-- 4. INTERACTIVE FAN HYPE & SHARE BAR (FRESH ZERO START) -->
+    <div class="fan-hype-bar">
+      <button type="button" class="hype-btn" id="sendFireBtn" data-track-id="fan_hype" data-track-name="Fan Fire Reaction">
+        <span>🔥 Send Blessings</span>
+        <span class="hype-count-pill" id="hypeCounter">0</span>
+      </button>
+      <button type="button" class="hype-btn" id="bottomShareBtn" data-track-id="share" data-track-name="Share Page">
+        <span>↗ Share Profile</span>
+      </button>
+    </div>
+
+    <!-- 5. FOOTER WITH "SAY TRACKSTAR" BRANDING (Triple-tap to open Private 24h Analytics) -->
+    <footer>
+      <div class="footer-brand" id="secretFooterTrigger" title="Eakoma • Say Trackstar">
+        <span>Eakoma</span>
+        <span class="footer-brand-badge">SAY TRACKSTAR</span>
+      </div>
+      <div class="footer-tagline">&copy; 2026 Eakoma &bull; Say Trackstar Movement. All Rights Reserved.</div>
+    </footer>
+
+  </div>
+
+  <!-- Toast Banner -->
+  <div class="toast-banner" id="toastBanner" role="status" aria-live="polite"></div>
+
+  <!-- =========================================================
+       NATIVE MODAL 1: ARTIST QR CODE VIP PASS
+       ========================================================= -->
+  <dialog id="qrDialog" closedby="any" aria-labelledby="qrDialogTitle">
+    <div class="vault-container">
+      <div class="vault-header">
+        <div class="vault-title-group">
+          <span class="vault-eyebrow">Say Trackstar VIP Pass</span>
+          <h2 class="vault-title" id="qrDialogTitle">Eakoma Official QR</h2>
+          <p class="vault-subtitle">Scan with any camera to open this official page</p>
+        </div>
+        <button type="button" class="vault-close-btn" id="closeQrBtn" aria-label="Close QR Dialog">&times;</button>
+      </div>
+      <div class="qr-box">
+        <div class="qr-canvas-wrap">
+          <canvas id="qrCanvas" width="200" height="200"></canvas>
+        </div>
+        <p class="vault-subtitle" id="qrUrlDisplay"></p>
+        <button type="button" class="vault-action-btn primary" id="copyLinkFromQrBtn">Copy Official Page Link</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- =========================================================
+       NATIVE MODAL 2: PRIVATE 24-HOUR ANALYTICS VAULT
+       ========================================================= -->
+  <dialog id="analyticsVault" closedby="any" aria-labelledby="vaultTitle">
+    <div class="vault-container">
+      <div class="vault-header">
+        <div class="vault-title-group">
+          <span class="vault-eyebrow">
+            <span class="status-dot"></span>
+            <span>Say Trackstar &bull; Private Owner Telemetry</span>
+          </span>
+          <h2 class="vault-title" id="vaultTitle">24-Hour Analytics Vault</h2>
+          <p class="vault-subtitle" id="vaultWindowLabel">Rolling 24-Hour Breakdown &bull; Private View</p>
+        </div>
+        <button type="button" class="vault-close-btn" id="closeVaultBtn" aria-label="Close Analytics Vault">&times;</button>
+      </div>
+
+      <!-- PIN Gate Screen -->
+      <div id="pinGateScreen" class="pin-screen">
+        <p class="vault-subtitle">Enter your 4-digit Owner PIN to unlock private 24-hour click &amp; visitor telemetry.</p>
+        <form id="pinForm" class="pin-input-row">
+          <input
+            type="password"
+            id="pinInput"
+            class="pin-input"
+            inputmode="numeric"
+            maxlength="8"
+            placeholder="••••"
+            aria-label="4-digit Owner PIN"
+            autofocus>
+          <button type="submit" class="pin-submit-btn">Unlock</button>
+        </form>
+        <div class="pin-error" id="pinErrorMsg" aria-live="polite"></div>
+      </div>
+
+      <!-- Unlocked Dashboard Content -->
+      <div id="vaultDashboard" hidden style="display: none; flex-direction: column; gap: 1.15rem;">
+
+        <!-- Time Window Selector -->
+        <div class="window-tabs" role="tablist" aria-label="Analytics Time Window">
+          <button type="button" class="window-tab active" data-window="24h" role="tab" aria-selected="true">Last 24 Hours</button>
+          <button type="button" class="window-tab" data-window="prev24h" role="tab" aria-selected="false">Prev 24h</button>
+          <button type="button" class="window-tab" data-window="7d" role="tab" aria-selected="false">Last 7 Days</button>
+          <button type="button" class="window-tab" data-window="all" role="tab" aria-selected="false">All Time</button>
+        </div>
+
+        <!-- 4 KPI Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <span class="kpi-label">Page Visits</span>
+            <span class="kpi-value" id="kpiViews">0</span>
+            <span class="kpi-sub" id="kpiUniqueSub">0 unique visitors</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Link Clicks</span>
+            <span class="kpi-value" id="kpiClicks">0</span>
+            <span class="kpi-sub" id="kpiClicksDelta">Every link tracked</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Click Rate (CTR)</span>
+            <span class="kpi-value" id="kpiCtr">0%</span>
+            <span class="kpi-sub">Clicks per visit</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">#1 Top Link</span>
+            <span class="kpi-value" id="kpiTopLink" style="font-size: 1.05rem; padding-top: 0.25rem;">—</span>
+            <span class="kpi-sub" id="kpiTopLinkCount">0 clicks</span>
+          </div>
+        </div>
+
+        <!-- Per-Link Breakdown Table -->
+        <div>
+          <div class="vault-section-title">
+            <span>Which Link / Song Was Clicked (24h Breakdown)</span>
+            <span id="totalLinksBadge" style="color: var(--accent-cyan); font-family: var(--font-mono);">0 total</span>
+          </div>
+          <table class="link-stats-table" aria-label="Per-link click breakdown">
+            <thead>
+              <tr>
+                <th>Platform / Song</th>
+                <th style="text-align: right;">Clicks</th>
+                <th style="text-align: right;">Share</th>
+                <th style="text-align: right;">Last Click</th>
+              </tr>
+            </thead>
+            <tbody id="linkBreakdownBody"></tbody>
+          </table>
+        </div>
+
+        <!-- 24-Hour Hourly Activity Sparkline -->
+        <div class="hourly-chart-box">
+          <div class="vault-section-title" style="margin-bottom: 0.2rem;">
+            <span>Hour-By-Hour Activity (Last 24 Hours)</span>
+            <span id="peakHourLabel" style="color: var(--text-sub); font-size: 0.7rem;">Peak: —</span>
+          </div>
+          <div class="hourly-bars" id="hourlyBarsContainer" aria-hidden="true"></div>
+          <div class="hourly-axis">
+            <span>24h ago</span>
+            <span>18h ago</span>
+            <span>12h ago</span>
+            <span>6h ago</span>
+            <span>Now</span>
+          </div>
+        </div>
+
+        <!-- Live Event Stream -->
+        <div>
+          <div class="vault-section-title">
+            <span>Recent Click &amp; Visit Log</span>
+            <span style="color: var(--text-muted); font-size: 0.68rem;">Real-time</span>
+          </div>
+          <div class="activity-feed" id="recentFeedList"></div>
+        </div>
+
+        <!-- Export & Management Buttons -->
+        <div class="vault-actions">
+          <button type="button" class="vault-action-btn primary" id="copyWhatsappReportBtn">📋 Copy 24h Report</button>
+          <button type="button" class="vault-action-btn" id="exportCsvBtn">⬇ Export CSV</button>
+          <button type="button" class="vault-action-btn" id="changePinBtn">🔑 Change PIN</button>
+          <button type="button" class="vault-action-btn danger" id="resetStatsBtn">🗑 Reset</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- =========================================================
+       SCRIPTS: 24H ANALYTICS ENGINE (ZEROED), AUDIOMACK PLAYER & UI
+       ========================================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ---------------------------------------------------------
+         1. MODERN WEB GUIDANCE POLYFILLS & TOP-LAYER HELPERS
+         --------------------------------------------------------- */
+      if (!window.CSS || !CSS.supports('animation-delay: calc(sibling-index() * 0.1s)')) {
+        const staggerList = document.getElementById('linksList');
+        if (staggerList) {
+          [...staggerList.children].forEach((el, index) => {
+            el.style.setProperty('--sibling-index', index + 1);
+          });
+        }
+      }
+
+      let supportsDisplayTransition;
+      function canTransitionDisplay() {
+        if (supportsDisplayTransition !== undefined) return supportsDisplayTransition;
+        if (!window.CSS?.supports?.('transition-behavior', 'allow-discrete') || !document.body) {
+          return false;
+        }
+        const probe = document.createElement('div');
+        probe.style.cssText = 'transition: display 1s allow-discrete !important; display: block;';
+        document.body.appendChild(probe);
+        getComputedStyle(probe).display;
+        probe.style.display = 'none';
+        supportsDisplayTransition = getComputedStyle(probe).display === 'block';
+        probe.remove();
+        return supportsDisplayTransition;
+      }
+
+      function supportsTopLayerExit() {
+        return window.CSS?.supports?.('overlay', 'auto') && canTransitionDisplay();
+      }
+
+      async function closeTopLayer(dialogEl) {
+        if (!dialogEl || !dialogEl.open) return;
+        if (!supportsTopLayerExit()) {
+          dialogEl.setAttribute('data-closing', '');
+          const animations = dialogEl.getAnimations({ subtree: true });
+          if (animations.length > 0) {
+            await Promise.race([
+              Promise.allSettled(animations.map((a) => a.finished)),
+              new Promise((r) => setTimeout(r, 400)),
+            ]);
+          }
+          if (!dialogEl.hasAttribute('data-closing')) return;
+          dialogEl.removeAttribute('data-closing');
+        }
+        dialogEl.close();
+      }
+
+      const allDialogs = document.querySelectorAll('dialog[closedby="any"]');
+      allDialogs.forEach((dialogEl) => {
+        dialogEl.addEventListener('cancel', (event) => {
+          event.preventDefault();
+          closeTopLayer(dialogEl);
+        });
+
+        if (!('closedBy' in HTMLDialogElement.prototype)) {
+          dialogEl.addEventListener('click', (event) => {
+            if (event.target !== dialogEl) return;
+            const rect = dialogEl.getBoundingClientRect();
+            const isDialogContent = (
+              rect.top <= event.clientY &&
+              event.clientY <= rect.top + rect.height &&
+              rect.left <= event.clientX &&
+              event.clientX <= rect.left + rect.width
+            );
+            if (isDialogContent) return;
+            closeTopLayer(dialogEl);
+          });
+        }
+      });
+
+      /* ---------------------------------------------------------
+         2. TOAST HELPER
+         --------------------------------------------------------- */
+      let toastTimer = null;
+      function showToast(msg) {
+        const toast = document.getElementById('toastBanner');
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
+      }
+
+      /* ---------------------------------------------------------
+         3. PRIVATE 24-HOUR ANALYTICS ENGINE (FRESH ZERO STATE)
+         --------------------------------------------------------- */
+      try {
+        localStorage.removeItem('eakoma_analytics_v2');
+        localStorage.removeItem('eakoma_fan_hype_count');
+        localStorage.removeItem('eakoma_spotify_notified');
+      } catch (e) {}
+
+      const STORAGE_KEY = 'eakoma_analytics_v3_zero';
+      const PIN_KEY = 'eakoma_owner_pin';
+      const VISITOR_KEY = 'eakoma_visitor_id';
+      const HYPE_KEY = 'eakoma_fan_hype_v3_zero';
+      const SPOTIFY_NOTIFY_KEY = 'eakoma_spotify_v3_zero';
+
+      const TRACKED_LINKS = [
+        { id: 'audiomack', name: 'Audiomack Profile', icon: '🟠' },
+        { id: 'youtube', name: 'YouTube Channel', icon: '▶️' },
+        { id: 'instagram', name: 'Instagram (@iameakoma)', icon: '📸' },
+        { id: 'tiktok', name: 'TikTok (@iameakoma)', icon: '🎵' },
+        { id: 'facebook', name: 'Facebook Ministry', icon: '🔵' },
+        { id: 'spotify', name: 'Spotify Pre-Save / Notify', icon: '🟢' },
+        { id: 'song_alpha_hour', name: 'Song #1: Alpha Hour', icon: '🎧' },
+        { id: 'song_thats_the_feeling', name: 'Song #2: That\'s The Feeling', icon: '🎧' },
+        { id: 'song_green_pastures', name: 'Song #3: Green Pastures', icon: '🎧' },
+        { id: 'song_said_what_i_said', name: 'Song #4: Said What I Said', icon: '🎧' },
+        { id: 'song_start_of_the_year', name: 'Song #5: Start Of The Year', icon: '🎧' },
+        { id: 'share', name: 'Profile Share / QR', icon: '↗️' },
+        { id: 'fan_hype', name: 'Fan Blessings (🔥)', icon: '🔥' }
+      ];
+
+      function getVisitorId() {
+        try {
+          let vid = localStorage.getItem(VISITOR_KEY);
+          if (!vid) {
+            vid = 'v_' + Math.random().toString(36).slice(2, 10) + '_' + Date.now().toString(36);
+            localStorage.setItem(VISITOR_KEY, vid);
+          }
+          return vid;
+        } catch (e) {
+          return 'v_anon';
+        }
+      }
+
+      function getDeviceType() {
+        const ua = navigator.userAgent || '';
+        if (/iPhone|iPad|iPod/i.test(ua)) return 'iOS';
+        if (/Android/i.test(ua)) return 'Android';
+        if (/Macintosh|Windows|Linux/i.test(ua)) return 'Desktop';
+        return 'Mobile';
+      }
+
+      function loadAnalyticsStore() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return { events: [] };
+          const parsed = JSON.parse(raw);
+          if (!Array.isArray(parsed.events)) return { events: [] };
+          return parsed;
+        } catch (e) {
+          return { events: [] };
+        }
+      }
+
+      function saveAnalyticsStore(store) {
+        try {
+          const cutoff = Date.now() - (30 * 24 * 60 * 60 * 1000);
+          store.events = store.events.filter((ev) => ev && ev.ts >= cutoff);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
+        } catch (e) {}
+      }
+
+      function recordAnalyticsEvent(type, linkId, linkName) {
+        const eventObj = {
+          id: 'ev_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
+          type: type,
+          linkId: linkId || 'page',
+          linkName: linkName || 'Page Visit',
+          ts: Date.now(),
+          visitorId: getVisitorId(),
+          device: getDeviceType()
+        };
+
+        const store = loadAnalyticsStore();
+        store.events.push(eventObj);
+        saveAnalyticsStore(store);
+
+        if (location.protocol === 'http:' || location.protocol === 'https:') {
+          try {
+            const payload = JSON.stringify(eventObj);
+            if (navigator.sendBeacon) {
+              navigator.sendBeacon('/api/analytics', new Blob([payload], { type: 'application/json' }));
+            } else {
+              fetch('/api/analytics', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: payload,
+                keepalive: true
+              }).catch(() => {});
+            }
+          } catch (e) {}
+        }
+      }
+
+      async function syncServerEvents() {
+        if (location.protocol !== 'http:' && location.protocol !== 'https:') return;
+        try {
+          const res = await fetch('/api/analytics?window=7d', { cache: 'no-store' });
+          if (!res.ok) return;
+          const data = await res.json();
+          if (data && Array.isArray(data.events)) {
+            const store = loadAnalyticsStore();
+            const existingIds = new Set(store.events.map((e) => e.id));
+            let added = false;
+            data.events.forEach((ev) => {
+              if (ev && ev.id && !existingIds.has(ev.id)) {
+                store.events.push(ev);
+                existingIds.add(ev.id);
+                added = true;
+              }
+            });
+            if (added) {
+              store.events.sort((a, b) => a.ts - b.ts);
+              saveAnalyticsStore(store);
+            }
+          }
+        } catch (e) {}
+      }
+
+      // Only record automatic pageview when live on web (http/https) and not opening #stats
+      if ((location.protocol === 'http:' || location.protocol === 'https:') &&
+          !location.hash.includes('stats') && !location.hash.includes('admin')) {
+        recordAnalyticsEvent('pageview', 'page', 'Page Visit');
+      }
+
+      /* ---------------------------------------------------------
+         4. AUDIOMACK SHORT TRACKLIST PLAYER SWITCHER
+         --------------------------------------------------------- */
+      const audiomackEmbed = document.getElementById('audiomackEmbed');
+      const trackRows = document.querySelectorAll('.am-track-row');
+
+      trackRows.forEach((row) => {
+        row.addEventListener('click', (e) => {
+          const slug = row.getAttribute('data-slug');
+          const trackId = row.getAttribute('data-track-id');
+          const trackName = row.getAttribute('data-track-name');
+
+          if (trackId) {
+            recordAnalyticsEvent('click', trackId, trackName);
+          }
+
+          if (e.target.closest('.am-open-link')) {
+            return;
+          }
+
+          trackRows.forEach((r) => r.classList.remove('active'));
+          row.classList.add('active');
+
+          if (audiomackEmbed && slug) {
+            const targetSrc = `https://audiomack.com/embed/iameakoma/song/${slug}?background=1`;
+            if (audiomackEmbed.getAttribute('src') !== targetSrc) {
+              audiomackEmbed.setAttribute('src', targetSrc);
+            }
+          }
+        });
+
+        row.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            row.click();
+          }
+        });
+      });
+
+      /* ---------------------------------------------------------
+         5. ATTACH CLICK TRACKING & SPOTLIGHT EFFECT TO ALL LINKS
+         --------------------------------------------------------- */
+      const interactiveCards = document.querySelectorAll('.link-btn');
+      interactiveCards.forEach((card) => {
+        card.addEventListener('pointermove', (e) => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
+          card.style.setProperty('--mouse-y', (e.clientY - rect.top) + 'px');
+        });
+
+        card.addEventListener('click', () => {
+          const trackId = card.getAttribute('data-track-id');
+          const trackName = card.getAttribute('data-track-name');
+          if (trackId) {
+            recordAnalyticsEvent('click', trackId, trackName);
+          }
+        });
+      });
+
+      const spotifyBtn = document.getElementById('spotifyNotifyBtn');
+      const spotifyBadge = document.getElementById('spotifyBadge');
+      const spotifySubtext = document.getElementById('spotifySubtext');
+
+      function updateSpotifyState(notified) {
+        if (!spotifyBtn || !spotifyBadge || !spotifySubtext) return;
+        if (notified) {
+          spotifyBtn.classList.add('notified');
+          spotifyBadge.textContent = 'Notified ✓';
+          spotifySubtext.textContent = 'You’re on the VIP list for the Spotify drop!';
+        }
+      }
+
+      try {
+        if (localStorage.getItem(SPOTIFY_NOTIFY_KEY) === '1') {
+          updateSpotifyState(true);
+        }
+      } catch (e) {}
+
+      if (spotifyBtn) {
+        spotifyBtn.addEventListener('click', () => {
+          try { localStorage.setItem(SPOTIFY_NOTIFY_KEY, '1'); } catch (e) {}
+          updateSpotifyState(true);
+          showToast('🟢 Locked in! You’ll be first to know when Eakoma drops on Spotify.');
+        });
+      }
+
+      /* ---------------------------------------------------------
+         6. 3D AVATAR TILT & FAN HYPE COUNTER (STARTS AT ZERO)
+         --------------------------------------------------------- */
+      const avatarStage = document.getElementById('avatarStage');
+      const avatarRing = document.getElementById('avatarRing');
+      if (avatarStage && avatarRing) {
+        avatarStage.addEventListener('pointermove', (e) => {
+          const rect = avatarStage.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          avatarRing.style.transform = `rotateY(${x * 18}deg) rotateX(${-y * 18}deg) scale(1.04)`;
+        });
+        avatarStage.addEventListener('pointerleave', () => {
+          avatarRing.style.transform = '';
+        });
+      }
+
+      const sendFireBtn = document.getElementById('sendFireBtn');
+      const hypeCounter = document.getElementById('hypeCounter');
+      let currentHype = 0;
+      try {
+        const savedHype = parseInt(localStorage.getItem(HYPE_KEY), 10);
+        if (!isNaN(savedHype) && savedHype >= 0) currentHype = savedHype;
+      } catch (e) {}
+      if (hypeCounter) hypeCounter.textContent = currentHype.toLocaleString();
+
+      if (sendFireBtn) {
+        sendFireBtn.addEventListener('click', () => {
+          currentHype += 1;
+          if (hypeCounter) hypeCounter.textContent = currentHype.toLocaleString();
+          try { localStorage.setItem(HYPE_KEY, String(currentHype)); } catch (e) {}
+          recordAnalyticsEvent('click', 'fan_hype', 'Fan Blessings (🔥)');
+          showToast('🔥 Blessings sent to Eakoma • Say Trackstar!');
+        });
+      }
+
+      /* ---------------------------------------------------------
+         7. SHARE PROFILE & QR PASS GENERATOR
+         --------------------------------------------------------- */
+      async function shareProfile() {
+        recordAnalyticsEvent('click', 'share', 'Profile Share / QR');
+        const shareData = {
+          title: 'Eakoma | Say Trackstar — Official Artist Hub',
+          text: 'Stream Eakoma — Global Ambassador Of Christ • Say Trackstar',
+          url: window.location.href.split('#')[0]
+        };
+        if (navigator.share) {
+          try {
+            await navigator.share(shareData);
+            return;
+          } catch (err) {
+            if (err && err.name === 'AbortError') return;
+          }
+        }
+        try {
+          await navigator.clipboard.writeText(shareData.url);
+          showToast('🔗 Official page link copied to clipboard!');
+        } catch (e) {
+          showToast('🔗 Link: ' + shareData.url);
+        }
+      }
+
+      document.getElementById('topShareBtn')?.addEventListener('click', shareProfile);
+      document.getElementById('bottomShareBtn')?.addEventListener('click', shareProfile);
+
+      function drawStylizedQrPass(canvas, text) {
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const size = 21;
+        const cell = Math.floor(canvas.width / size);
+        const offset = Math.floor((canvas.width - cell * size) / 2);
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        let hash = 2166136261;
+        for (let i = 0; i < text.length; i++) {
+          hash ^= text.charCodeAt(i);
+          hash = Math.imul(hash, 16777619);
+        }
+
+        function isFinder(r, c) {
+          if (r < 7 && c < 7) return true;
+          if (r < 7 && c >= size - 7) return true;
+          if (r >= size - 7 && c < 7) return true;
+          return false;
+        }
+
+        function drawFinder(row, col) {
+          ctx.fillStyle = '#040711';
+          ctx.fillRect(offset + col * cell, offset + row * cell, 7 * cell, 7 * cell);
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(offset + (col + 1) * cell, offset + (row + 1) * cell, 5 * cell, 5 * cell);
+          ctx.fillStyle = '#0066ff';
+          ctx.fillRect(offset + (col + 2) * cell, offset + (row + 2) * cell, 3 * cell, 3 * cell);
+        }
+
+        drawFinder(0, 0);
+        drawFinder(0, size - 7);
+        drawFinder(size - 7, 0);
+
+        ctx.fillStyle = '#040711';
+        for (let r = 0; r < size; r++) {
+          for (let c = 0; c < size; c++) {
+            if (isFinder(r, c)) continue;
+            if (r >= 8 && r <= 12 && c >= 8 && c <= 12) continue;
+            const bit = ((hash >>> ((r * size + c) % 31)) ^ (r * 17 + c * 31)) & 1;
+            if (bit) {
+              ctx.beginPath();
+              ctx.roundRect(offset + c * cell + 0.5, offset + r * cell + 0.5, cell - 1, cell - 1, 2);
+              ctx.fill();
+            }
+          }
+        }
+
+        ctx.fillStyle = '#040711';
+        ctx.beginPath();
+        ctx.arc(canvas.width / 2, canvas.height / 2, cell * 2.2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#ffd166';
+        ctx.font = '900 18px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('E', canvas.width / 2, canvas.height / 2 + 1);
+      }
+
+      const qrDialog = document.getElementById('qrDialog');
+      document.getElementById('openQrBtn')?.addEventListener('click', () => {
+        recordAnalyticsEvent('click', 'share', 'Profile Share / QR');
+        const cleanUrl = window.location.href.split('#')[0];
+        const qrUrlDisplay = document.getElementById('qrUrlDisplay');
+        if (qrUrlDisplay) qrUrlDisplay.textContent = cleanUrl;
+        drawStylizedQrPass(document.getElementById('qrCanvas'), cleanUrl);
+        qrDialog?.showModal();
+      });
+
+      document.getElementById('closeQrBtn')?.addEventListener('click', () => closeTopLayer(qrDialog));
+      document.getElementById('copyLinkFromQrBtn')?.addEventListener('click', async () => {
+        const cleanUrl = window.location.href.split('#')[0];
+        try {
+          await navigator.clipboard.writeText(cleanUrl);
+          showToast('🔗 Official link copied!');
+        } catch (e) {
+          showToast(cleanUrl);
+        }
+      });
+
+      /* ---------------------------------------------------------
+         8. PRIVATE 24-HOUR ANALYTICS VAULT UI & TRIGGERS
+         --------------------------------------------------------- */
+      const analyticsVault = document.getElementById('analyticsVault');
+      const pinGateScreen = document.getElementById('pinGateScreen');
+      const vaultDashboard = document.getElementById('vaultDashboard');
+      const pinForm = document.getElementById('pinForm');
+      const pinInput = document.getElementById('pinInput');
+      const pinErrorMsg = document.getElementById('pinErrorMsg');
+
+      let activeWindow = '24h';
+      let isVaultUnlocked = false;
+
+      function getOwnerPin() {
+        try {
+          return localStorage.getItem(PIN_KEY) || '2026';
+        } catch (e) {
+          return '2026';
+        }
+      }
+
+      function formatTimeAgo(ts) {
+        if (!ts) return '—';
+        const diffSec = Math.max(1, Math.floor((Date.now() - ts) / 1000));
+        if (diffSec < 60) return diffSec + 's ago';
+        const diffMin = Math.floor(diffSec / 60);
+        if (diffMin < 60) return diffMin + 'm ago';
+        const diffHr = Math.floor(diffMin / 60);
+        if (diffHr < 24) return diffHr + 'h ago';
+        const diffDays = Math.floor(diffHr / 24);
+        return diffDays + 'd ago';
+      }
+
+      function getFilteredEvents(windowKey) {
+        const store = loadAnalyticsStore();
+        const now = Date.now();
+        const DAY_MS = 24 * 60 * 60 * 1000;
+
+        if (windowKey === '24h') {
+          return store.events.filter((e) => e.ts >= now - DAY_MS);
+        }
+        if (windowKey === 'prev24h') {
+          return store.events.filter((e) => e.ts >= now - 2 * DAY_MS && e.ts < now - DAY_MS);
+        }
+        if (windowKey === '7d') {
+          return store.events.filter((e) => e.ts >= now - 7 * DAY_MS);
+        }
+        return store.events;
+      }
+
+      function renderAnalyticsDashboard() {
+        const events = getFilteredEvents(activeWindow);
+        const pageviews = events.filter((e) => e.type === 'pageview');
+        const clicks = events.filter((e) => e.type === 'click');
+        const uniqueVisitors = new Set(events.map((e) => e.visitorId || 'anon')).size;
+        const ctr = pageviews.length > 0
+          ? Math.min(100, Math.round((clicks.length / pageviews.length) * 1000) / 10)
+          : (clicks.length > 0 ? 100 : 0);
+
+        const windowLabels = {
+          '24h': 'Last 24 Hours (Rolling 24h Window)',
+          'prev24h': 'Previous 24 Hours (Yesterday Window)',
+          '7d': 'Last 7 Days Summary',
+          'all': 'All-Time Cumulative Summary'
+        };
+        const vaultWindowLabel = document.getElementById('vaultWindowLabel');
+        if (vaultWindowLabel) vaultWindowLabel.textContent = windowLabels[activeWindow] || '';
+
+        document.getElementById('kpiViews').textContent = pageviews.length.toLocaleString();
+        document.getElementById('kpiUniqueSub').textContent = uniqueVisitors.toLocaleString() + ' unique visitor' + (uniqueVisitors === 1 ? '' : 's');
+        document.getElementById('kpiClicks').textContent = clicks.length.toLocaleString();
+        document.getElementById('kpiCtr').textContent = ctr + '%';
+        document.getElementById('totalLinksBadge').textContent = clicks.length.toLocaleString() + ' total clicks';
+
+        const countsByLink = {};
+        const lastClickByLink = {};
+        TRACKED_LINKS.forEach((item) => {
+          countsByLink[item.id] = 0;
+          lastClickByLink[item.id] = 0;
+        });
+
+        clicks.forEach((ev) => {
+          const id = ev.linkId || 'other';
+          countsByLink[id] = (countsByLink[id] || 0) + 1;
+          if (!lastClickByLink[id] || ev.ts > lastClickByLink[id]) {
+            lastClickByLink[id] = ev.ts;
+          }
+        });
+
+        const sortedLinks = [...TRACKED_LINKS].sort((a, b) => (countsByLink[b.id] || 0) - (countsByLink[a.id] || 0));
+        const topItem = sortedLinks[0];
+        const topCount = topItem ? (countsByLink[topItem.id] || 0) : 0;
+
+        document.getElementById('kpiTopLink').textContent = topCount > 0 ? topItem.name.split(' (')[0] : '—';
+        document.getElementById('kpiTopLinkCount').textContent = topCount.toLocaleString() + ' click' + (topCount === 1 ? '' : 's') + ' in period';
+
+        const tbody = document.getElementById('linkBreakdownBody');
+        if (tbody) {
+          tbody.innerHTML = '';
+          sortedLinks.forEach((item) => {
+            const count = countsByLink[item.id] || 0;
+            const sharePct = clicks.length > 0 ? Math.round((count / clicks.length) * 100) : 0;
+            const lastTs = lastClickByLink[item.id];
+
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td>
+                <div class="link-stat-name"><span>${item.icon}</span><span>${item.name}</span></div>
+                <div class="stat-bar-track"><div class="stat-bar-fill" style="width: ${sharePct}%"></div></div>
+              </td>
+              <td class="stat-count-cell">${count.toLocaleString()}</td>
+              <td class="stat-count-cell" style="color: var(--text-sub);">${sharePct}%</td>
+              <td class="stat-last-cell">${formatTimeAgo(lastTs)}</td>
+            `;
+            tbody.appendChild(tr);
+          });
+        }
+
+        const hourlyContainer = document.getElementById('hourlyBarsContainer');
+        if (hourlyContainer) {
+          hourlyContainer.innerHTML = '';
+          const now = Date.now();
+          const HOUR_MS = 60 * 60 * 1000;
+          const store = loadAnalyticsStore();
+          const last24hEvents = store.events.filter((e) => e.ts >= now - 24 * HOUR_MS);
+
+          const buckets = new Array(24).fill(0);
+          const clickBuckets = new Array(24).fill(0);
+
+          last24hEvents.forEach((ev) => {
+            const hoursAgo = Math.floor((now - ev.ts) / HOUR_MS);
+            const idx = 23 - Math.min(23, Math.max(0, hoursAgo));
+            buckets[idx] += 1;
+            if (ev.type === 'click') clickBuckets[idx] += 1;
+          });
+
+          const maxBucket = Math.max(1, ...buckets);
+          let peakIdx = 0;
+          buckets.forEach((val, i) => {
+            if (val >= buckets[peakIdx]) peakIdx = i;
+          });
+
+          const peakHourLabel = document.getElementById('peakHourLabel');
+          if (peakHourLabel) {
+            const peakCount = buckets[peakIdx];
+            if (peakCount > 0) {
+              const peakTime = new Date(now - (23 - peakIdx) * HOUR_MS);
+              peakHourLabel.textContent = `Peak: ${peakTime.toLocaleTimeString([], { hour: 'numeric' })} (${peakCount} events)`;
+            } else {
+              peakHourLabel.textContent = 'Peak: —';
+            }
+          }
+
+          buckets.forEach((count, i) => {
+            const heightPct = count > 0 ? Math.max(12, Math.round((count / maxBucket) * 100)) : 4;
+            const col = document.createElement('div');
+            col.className = 'hour-col';
+            col.title = `${23 - i}h ago: ${count} total (${clickBuckets[i]} clicks)`;
+            const bar = document.createElement('div');
+            bar.className = 'hour-bar' + (clickBuckets[i] > 0 ? ' has-clicks' : '');
+            bar.style.height = heightPct + '%';
+            col.appendChild(bar);
+            hourlyContainer.appendChild(col);
+          });
+        }
+
+        const feedList = document.getElementById('recentFeedList');
+        if (feedList) {
+          feedList.innerHTML = '';
+          const recent = [...events].sort((a, b) => b.ts - a.ts).slice(0, 25);
+          if (recent.length === 0) {
+            feedList.innerHTML = '<div class="feed-item"><span>0 events recorded — fresh and ready for launch.</span></div>';
+          } else {
+            recent.forEach((ev) => {
+              const row = document.createElement('div');
+              row.className = 'feed-item';
+              const badge = ev.type === 'click' ? '🔥 Clicked' : '👁️ Visited';
+              const timeStr = new Date(ev.ts).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+              row.innerHTML = `
+                <span><strong>${badge}:</strong> ${ev.linkName} <small style="color:var(--text-muted)">(${ev.device || 'Web'})</small></span>
+                <span class="feed-time">${timeStr} • ${formatTimeAgo(ev.ts)}</span>
+              `;
+              feedList.appendChild(row);
+            });
+          }
+        }
+      }
+
+      async function openAnalyticsVault() {
+        if (!analyticsVault) return;
+        await syncServerEvents();
+        if (isVaultUnlocked) {
+          pinGateScreen.style.display = 'none';
+          vaultDashboard.hidden = false;
+          vaultDashboard.style.display = 'flex';
+          renderAnalyticsDashboard();
+        } else {
+          pinGateScreen.style.display = 'flex';
+          vaultDashboard.hidden = true;
+          vaultDashboard.style.display = 'none';
+          if (pinInput) pinInput.value = '';
+          if (pinErrorMsg) pinErrorMsg.textContent = '';
+        }
+        if (!analyticsVault.open) {
+          analyticsVault.showModal();
+        }
+      }
+
+      if (pinForm) {
+        pinForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const entered = (pinInput?.value || '').trim();
+          if (entered === getOwnerPin()) {
+            isVaultUnlocked = true;
+            pinGateScreen.style.display = 'none';
+            vaultDashboard.hidden = false;
+            vaultDashboard.style.display = 'flex';
+            renderAnalyticsDashboard();
+          } else {
+            if (pinErrorMsg) pinErrorMsg.textContent = 'Incorrect Owner PIN. Try again.';
+            if (pinInput) pinInput.select();
+          }
+        });
+      }
+
+      document.getElementById('closeVaultBtn')?.addEventListener('click', () => closeTopLayer(analyticsVault));
+
+      document.querySelectorAll('.window-tab').forEach((tabBtn) => {
+        tabBtn.addEventListener('click', () => {
+          document.querySelectorAll('.window-tab').forEach((b) => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          tabBtn.classList.add('active');
+          tabBtn.setAttribute('aria-selected', 'true');
+          activeWindow = tabBtn.getAttribute('data-window') || '24h';
+          renderAnalyticsDashboard();
+        });
+      });
+
+      const secretFooterTrigger = document.getElementById('secretFooterTrigger');
+      let footerClicks = 0;
+      let footerTimer = null;
+      if (secretFooterTrigger) {
+        secretFooterTrigger.addEventListener('click', () => {
+          footerClicks += 1;
+          clearTimeout(footerTimer);
+          if (footerClicks >= 3) {
+            footerClicks = 0;
+            openAnalyticsVault();
+          } else {
+            footerTimer = setTimeout(() => { footerClicks = 0; }, 650);
+          }
+        });
+      }
+
+      const verifiedBadge = document.getElementById('verifiedBadge');
+      let pressTimer = null;
+      if (verifiedBadge) {
+        verifiedBadge.addEventListener('pointerdown', () => {
+          pressTimer = setTimeout(() => openAnalyticsVault(), 1100);
+        });
+        ['pointerup', 'pointerleave', 'pointercancel'].forEach((evt) => {
+          verifiedBadge.addEventListener(evt, () => clearTimeout(pressTimer));
+        });
+      }
+
+      window.addEventListener('keydown', (e) => {
+        if (e.shiftKey && (e.key === 'A' || e.key === 'a') && document.activeElement?.tagName !== 'INPUT') {
+          e.preventDefault();
+          openAnalyticsVault();
+        }
+      });
+
+      function checkUrlHashForVault() {
+        if (location.hash === '#stats' || location.hash === '#admin' || location.search.includes('stats=1')) {
+          openAnalyticsVault();
+        }
+      }
+      window.addEventListener('hashchange', checkUrlHashForVault);
+      setTimeout(checkUrlHashForVault, 150);
+
+      document.getElementById('copyWhatsappReportBtn')?.addEventListener('click', async () => {
+        const events = getFilteredEvents(activeWindow);
+        const pageviews = events.filter((e) => e.type === 'pageview').length;
+        const clicks = events.filter((e) => e.type === 'click');
+        const ctr = pageviews > 0 ? Math.min(100, Math.round((clicks.length / pageviews) * 1000) / 10) : 0;
+
+        const counts = {};
+        clicks.forEach((c) => { counts[c.linkId] = (counts[c.linkId] || 0) + 1; });
+
+        const lines = [
+          `📊 *EAKOMA • SAY TRACKSTAR — 24H REPORT*`,
+          `🕒 Window: ${activeWindow.toUpperCase()} (${new Date().toLocaleDateString()})`,
+          `👁️ Page Visits: ${pageviews}`,
+          `🔥 Total Link Clicks: ${clicks.length} (${ctr}% CTR)`,
+          `━━━━━━━━━━━━━━━━━━━━`
+        ];
+
+        TRACKED_LINKS.forEach((item) => {
+          const c = counts[item.id] || 0;
+          lines.push(`${item.icon} ${item.name}: *${c}* click${c === 1 ? '' : 's'}`);
+        });
+
+        const reportText = lines.join('\n');
+        try {
+          await navigator.clipboard.writeText(reportText);
+          showToast('📋 24-Hour Report copied! Ready to paste in WhatsApp/Notes.');
+        } catch (e) {
+          showToast('Copied report!');
+        }
+      });
+
+      document.getElementById('exportCsvBtn')?.addEventListener('click', () => {
+        const events = getFilteredEvents(activeWindow);
+        const rows = [['Timestamp', 'ISO Date', 'Event Type', 'Link ID', 'Link Name', 'Device', 'Visitor ID']];
+        events.forEach((ev) => {
+          rows.push([
+            ev.ts,
+            new Date(ev.ts).toISOString(),
+            ev.type,
+            ev.linkId,
+            `"${(ev.linkName || '').replace(/"/g, '""')}"`,
+            ev.device || 'Web',
+            ev.visitorId || 'anon'
+          ]);
+        });
+        const csvContent = rows.map((r) => r.join(',')).join('\n');
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `eakoma-say-trackstar-${activeWindow}-${new Date().toISOString().slice(0, 10)}.csv`;
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast('⬇ CSV Analytics exported!');
+      });
+
+      document.getElementById('changePinBtn')?.addEventListener('click', () => {
+        const newPin = prompt('Enter new 4-digit Owner PIN:', getOwnerPin());
+        if (newPin && newPin.trim().length >= 4) {
+          try {
+            localStorage.setItem(PIN_KEY, newPin.trim());
+            showToast('🔑 Owner PIN updated to ' + newPin.trim());
+          } catch (e) {}
+        }
+      });
+
+      document.getElementById('resetStatsBtn')?.addEventListener('click', () => {
+        if (confirm('Reset all page visits, clicks, and fan blessings back to 0?')) {
+          saveAnalyticsStore({ events: [] });
+          currentHype = 0;
+          try {
+            localStorage.setItem(HYPE_KEY, '0');
+            localStorage.removeItem(SPOTIFY_NOTIFY_KEY);
+          } catch (e) {}
+          if (hypeCounter) hypeCounter.textContent = '0';
+          renderAnalyticsDashboard();
+          showToast('🗑 All counters reset to 0.');
+        }
+      });
+
+      /* ---------------------------------------------------------
+         9. STAGE PARTICLE & AMBIENT LIGHT CANVAS
+         --------------------------------------------------------- */
+      const canvas = document.getElementById('stageCanvas');
+      if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const ctx = canvas.getContext('2d');
+        let width = (canvas.width = window.innerWidth);
+        let height = (canvas.height = window.innerHeight);
+
+        window.addEventListener('resize', () => {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        });
+
+        const particles = Array.from({ length: 28 }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 2 + 0.6,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: -Math.random() * 0.35 - 0.1,
+          alpha: Math.random() * 0.55 + 0.15,
+          gold: Math.random() > 0.62
+        }));
+
+        let animId = null;
+        function drawParticles() {
+          ctx.clearRect(0, 0, width, height);
+          for (const p of particles) {
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.y < -10) {
+              p.y = height + 10;
+              p.x = Math.random() * width;
+            }
+            if (p.x < -10) p.x = width + 10;
+            if (p.x > width + 10) p.x = -10;
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = p.gold
+              ? `rgba(255, 209, 102, ${p.alpha})`
+              : `rgba(0, 229, 255, ${p.alpha})`;
+            ctx.fill();
+          }
+          animId = requestAnimationFrame(drawParticles);
+        }
+
+        drawParticles();
+
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            if (animId) cancelAnimationFrame(animId);
+            animId = null;
+          } else if (!animId) {
+            drawParticles();
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
