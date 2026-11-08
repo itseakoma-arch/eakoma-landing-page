@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eakoma | A New Wave Of Gospel</title>
-  <meta name="description" content="Official music, streaming platforms, and social channels for Eakoma — Global Ambassador Of Christ • Say Trackstar.">
+  <meta name="description" content="Official music, streaming platforms, drop alerts, and social channels for Eakoma — Global Ambassador Of Christ • Say Trackstar.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%2307080b%22 stroke=%22%23d4af37%22 stroke-width=%228%22/><text x=%2250%22 y=%2264%22 font-size=%2240%22 font-family=%22sans-serif%22 font-weight=%22900%22 fill=%22%23ffffff%22 text-anchor=%22middle%22>E</text></svg>">
 
   <style>
@@ -98,7 +98,7 @@
       z-index: 2;
       display: flex;
       flex-direction: column;
-      gap: 1.75rem;
+      gap: 1.5rem;
     }
 
     @keyframes fadeUp {
@@ -114,13 +114,13 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding-top: clamp(2.5rem, 6vw, 3.8rem);
+      padding-top: clamp(2rem, 5vw, 3.2rem);
       animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     .avatar-wrap {
       position: relative;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -142,8 +142,8 @@
     }
 
     .avatar-ring {
-      width: clamp(185px, 38vw, 220px);
-      height: clamp(185px, 38vw, 220px);
+      width: clamp(160px, 34vw, 200px);
+      height: clamp(160px, 34vw, 200px);
       border-radius: 50%;
       padding: 4px;
       background: linear-gradient(135deg, #ffffff 0%, #f5d77f 30%, #d4af37 65%, #8a661b 100%);
@@ -182,7 +182,7 @@
       text-transform: uppercase;
       padding: 0.4rem 1.05rem;
       border-radius: 999px;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.65rem;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
@@ -194,25 +194,25 @@
     }
 
     .artist-title {
-      font-size: clamp(2.8rem, 9.5vw, 4.2rem);
+      font-size: clamp(2.6rem, 9vw, 3.9rem);
       font-weight: 900;
       letter-spacing: -0.02em;
       color: #ffffff;
       line-height: 1.04;
       text-transform: uppercase;
       text-shadow: 0 4px 30px rgba(0, 0, 0, 0.95), 0 0 32px rgba(212, 175, 55, 0.45);
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.4rem;
     }
 
     .tagline-row {
       display: inline-flex;
       align-items: center;
       gap: 0.65rem;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.45rem;
     }
 
     .genre-tagline {
-      font-size: 1.02rem;
+      font-size: 0.98rem;
       color: var(--gold-champagne);
       font-weight: 700;
       letter-spacing: 0.16em;
@@ -245,7 +245,7 @@
     }
 
     .artist-ethos {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
       max-width: 390px;
       font-weight: 500;
@@ -254,14 +254,222 @@
     }
 
     /* =========================================================
-       2. SECTION DIVIDERS & ACTION BUTTONS (KAY MAGMA STYLE)
+       2. TOP INLINE VIP DROP ALERT BOX (ALWAYS OPEN AT TOP)
+       ========================================================= */
+    .vip-hero-card {
+      width: 100%;
+      background: linear-gradient(145deg, rgba(212, 175, 55, 0.16) 0%, rgba(15, 17, 23, 0.92) 55%, rgba(12, 14, 20, 0.96) 100%);
+      border: 1.5px solid rgba(212, 175, 55, 0.52);
+      border-radius: var(--radius-card);
+      padding: 1.25rem 1.3rem;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 28px rgba(212, 175, 55, 0.16);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .vip-hero-card.highlight-pulse {
+      border-color: var(--gold-bright);
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.48), 0 16px 36px rgba(0, 0, 0, 0.75);
+    }
+
+    .vip-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .vip-card-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--spotify-green);
+      box-shadow: 0 0 10px var(--spotify-green);
+      animation: dotPulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes dotPulse {
+      0%, 100% { transform: scale(0.9); opacity: 0.75; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+
+    .vip-card-title {
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--white-pure);
+      line-height: 1.25;
+      margin-bottom: 0.25rem;
+    }
+
+    .vip-card-desc {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.42;
+      margin-bottom: 0.95rem;
+    }
+
+    .inline-form-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .form-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 0.04em;
+      margin-block-end: 0.32rem;
+      padding: 6px 0;
+      margin-top: -6px;
+    }
+
+    .form-input {
+      width: 100%;
+      font-size: 1rem;
+      font-family: inherit;
+      padding: 0.76rem 0.95rem;
+      min-height: 48px;
+      border-radius: 12px;
+      border: 1px solid rgba(212, 175, 55, 0.36);
+      background: rgba(6, 7, 10, 0.75);
+      color: var(--white-pure);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    @media (pointer: coarse) {
+      .form-input {
+        min-height: 52px;
+      }
+    }
+
+    .form-input::placeholder {
+      color: rgba(226, 232, 240, 0.42);
+    }
+
+    .form-input:focus-visible {
+      outline: 2px solid var(--gold-bright);
+      outline-offset: 2px;
+      border-color: var(--gold-bright);
+    }
+
+    .form-input:invalid:user-invalid {
+      border-color: #ff6b6b;
+    }
+
+    .field-hint {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+      line-height: 1.35;
+    }
+
+    .field-error {
+      font-size: 0.76rem;
+      color: #ff8787;
+      font-weight: 600;
+      margin-top: 0.25rem;
+      min-height: 1rem;
+    }
+
+    .notify-submit-btn {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.85rem 1.2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 215, 0, 0.6);
+      background: linear-gradient(135deg, #fbeea4 0%, #d4af37 52%, #b58922 100%);
+      color: #06070a;
+      font-size: 0.96rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.28);
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .notify-submit-btn:hover {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+    }
+
+    .notify-submit-btn:focus-visible {
+      outline: 2px solid var(--white-pure);
+      outline-offset: 2px;
+    }
+
+    .notify-submit-btn:disabled {
+      opacity: 0.65;
+      cursor: default;
+      transform: none;
+    }
+
+    .inline-success-box {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.45rem 0.2rem;
+    }
+
+    .inline-success-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(30, 215, 96, 0.16);
+      border: 1px solid rgba(30, 215, 96, 0.45);
+      color: var(--spotify-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .inline-success-text h3 {
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: var(--white-pure);
+      margin-bottom: 0.12rem;
+    }
+
+    .inline-success-text p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.38;
+    }
+
+    /* =========================================================
+       3. SECTION DIVIDERS & ACTION BUTTONS (KAY MAGMA STYLE)
        ========================================================= */
     .section-label {
       display: flex;
       align-items: center;
       gap: 0.85rem;
       width: 100%;
-      margin-top: 0.25rem;
+      margin-top: 0.15rem;
       margin-bottom: -0.2rem;
     }
 
@@ -301,6 +509,9 @@
       border-radius: var(--radius-btn);
       color: var(--white-pure);
       text-decoration: none;
+      font-family: inherit;
+      text-align: left;
+      cursor: pointer;
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
@@ -315,15 +526,19 @@
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55), 0 0 22px rgba(212, 175, 55, 0.22);
     }
 
+    .link-btn:focus-visible {
+      outline: 2px solid var(--gold-bright);
+      outline-offset: 2px;
+    }
+
     .link-btn.coming-soon {
       border-style: dashed;
-      cursor: default;
+      cursor: pointer;
     }
 
     .link-btn.coming-soon:hover {
-      transform: none;
-      border-color: rgba(30, 215, 96, 0.5);
-      box-shadow: none;
+      border-color: rgba(30, 215, 96, 0.65);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5), 0 0 18px rgba(30, 215, 96, 0.18);
     }
 
     .badge-coming-soon {
@@ -332,9 +547,9 @@
       border: 1px solid rgba(30, 215, 96, 0.38);
       font-size: 0.7rem;
       font-weight: 800;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 0.28rem 0.7rem;
+      padding: 0.3rem 0.72rem;
       border-radius: 999px;
       flex-shrink: 0;
     }
@@ -408,12 +623,12 @@
     }
 
     /* =========================================================
-       3. FOOTER (TRIPLE-TAP TO VIEW 24H VISITORS)
+       4. FOOTER (TRIPLE-TAP TO VIEW 24H VISITORS & VIP DROP LIST)
        ========================================================= */
     footer {
       text-align: center;
-      margin-top: 1.25rem;
-      padding-top: 1.75rem;
+      margin-top: 1rem;
+      padding-top: 1.6rem;
       border-top: 1px solid rgba(212, 175, 55, 0.14);
       animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
       user-select: none;
@@ -436,23 +651,31 @@
     }
 
     /* =========================================================
-       SIMPLE PRIVATE 24-HOUR VISITOR CHECK MODAL
-       (Triple-tap "EAKOMA" in the footer or open #stats)
+       5. PRIVATE 24-HOUR OWNER VAULT MODAL (#stats)
        ========================================================= */
     dialog {
       margin: auto;
-      border: 1px solid rgba(212, 175, 55, 0.35);
-      border-radius: 20px;
+      border: 1px solid rgba(212, 175, 55, 0.38);
+      border-radius: 22px;
       background: #0c0e14;
       color: var(--white-pure);
-      padding: 1.4rem;
-      width: min(92vw, 380px);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+      padding: 1.5rem;
+      width: min(92vw, 410px);
+      max-height: 88vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.92), 0 0 40px rgba(212, 175, 55, 0.14);
+    }
+
+    dialog:modal {
+      overscroll-behavior: contain;
     }
 
     dialog::backdrop {
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(6px);
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+      overflow: hidden;
+      overscroll-behavior: contain;
     }
 
     .stats-top {
@@ -474,13 +697,26 @@
 
     .stats-close {
       background: rgba(255, 255, 255, 0.08);
-      border: none;
+      border: 1px solid rgba(255, 255, 255, 0.12);
       color: #fff;
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      font-size: 1rem;
+      font-size: 1.1rem;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stats-close:hover {
+      background: rgba(212, 175, 55, 0.2);
+      border-color: rgba(212, 175, 55, 0.45);
+    }
+
+    .stats-close:focus-visible {
+      outline: 2px solid var(--gold-bright);
+      outline-offset: 2px;
     }
 
     .visits-hero-box {
@@ -488,12 +724,12 @@
       background: rgba(212, 175, 55, 0.08);
       border: 1px solid rgba(212, 175, 55, 0.25);
       border-radius: 14px;
-      padding: 1.1rem;
-      margin-bottom: 1rem;
+      padding: 1rem;
+      margin-bottom: 0.9rem;
     }
 
     .visits-number {
-      font-size: 2.6rem;
+      font-size: 2.4rem;
       font-weight: 900;
       color: var(--white-pure);
       line-height: 1;
@@ -501,7 +737,7 @@
     }
 
     .visits-label {
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       color: var(--gold-champagne);
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -511,15 +747,15 @@
     .clicks-list {
       display: flex;
       flex-direction: column;
-      gap: 0.45rem;
-      margin-bottom: 1rem;
-      font-size: 0.85rem;
+      gap: 0.4rem;
+      margin-bottom: 1.15rem;
+      font-size: 0.84rem;
     }
 
     .clicks-row {
       display: flex;
       justify-content: space-between;
-      padding: 0.45rem 0.65rem;
+      padding: 0.42rem 0.65rem;
       background: rgba(255, 255, 255, 0.03);
       border-radius: 8px;
       color: var(--text-muted);
@@ -527,6 +763,106 @@
 
     .clicks-row strong {
       color: var(--white-pure);
+    }
+
+    .vip-vault-section {
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      padding-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .vip-vault-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+    }
+
+    .vip-vault-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold-champagne);
+    }
+
+    .vip-count-pill {
+      background: rgba(212, 175, 55, 0.18);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      color: var(--gold-light);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+    }
+
+    .vip-list-box {
+      max-height: 165px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 0.75rem;
+      padding-right: 2px;
+    }
+
+    .vip-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.5rem 0.65rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 9px;
+      font-size: 0.8rem;
+    }
+
+    .vip-item-left {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .vip-contact {
+      font-weight: 700;
+      color: var(--white-pure);
+      word-break: break-all;
+    }
+
+    .vip-meta {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .vip-empty {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 0.85rem;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 9px;
+    }
+
+    .vip-actions-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+
+    .vip-action-btn {
+      padding: 0.58rem 0.65rem;
+      border-radius: 9px;
+      background: rgba(212, 175, 55, 0.14);
+      border: 1px solid rgba(212, 175, 55, 0.38);
+      color: var(--gold-light);
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .vip-action-btn:hover {
+      background: rgba(212, 175, 55, 0.24);
     }
 
     .stats-reset-btn {
@@ -561,7 +897,7 @@
 
       <!-- Verified Artist Badge -->
       <div class="verified-badge">
-        <svg class="verified-icon" viewBox="0 0 24 24">
+        <svg class="verified-icon" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
         </svg>
         <span>Global Ambassador Of Christ</span>
@@ -584,32 +920,82 @@
       <p class="artist-ethos">Small With A Big God &bull; Say Trackstar</p>
     </header>
 
-    <!-- 2. STREAMING & SOCIAL ACTION LINKS -->
+    <!-- 2. ALWAYS-VISIBLE VIP DROP ALERT BOX AT THE VERY TOP -->
+    <section class="vip-hero-card" id="inlineVipCard" aria-labelledby="vipCardHeading">
+      <div id="inlineFormContainer">
+        <div class="vip-card-top">
+          <span class="vip-card-pill">
+            <span class="live-dot" aria-hidden="true"></span>
+            Official Drop Alerts
+          </span>
+        </div>
+
+        <h2 class="vip-card-title" id="vipCardHeading">Get New Songs &amp; Videos Sent to You First</h2>
+        <p class="vip-card-desc">
+          Don't let the algorithm hide new releases. Drop your number or email for an instant link when Eakoma drops.
+        </p>
+
+        <form id="inlineNotifyForm" class="inline-form-grid" action="/api/analytics" method="POST" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="fanContactInput">Phone Number or Email</label>
+            <input
+              type="text"
+              id="fanContactInput"
+              name="contact"
+              class="form-input"
+              autocomplete="tel"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="false"
+              enterkeyhint="done"
+              maxlength="140"
+              required
+              aria-describedby="fanContactHint fanContactError"
+              placeholder="Enter phone number or email..."
+            >
+            <span id="fanContactHint" class="field-hint">100% private. Only texts/emails when new music or videos drop.</span>
+            <div id="fanContactError" class="field-error" aria-live="polite"></div>
+          </div>
+
+          <button type="submit" class="notify-submit-btn" id="notifySubmitBtn">Notify Me on New Drops</button>
+        </form>
+      </div>
+
+      <div id="inlineSuccessContainer" class="inline-success-box" hidden>
+        <div class="inline-success-icon" aria-hidden="true">&#10003;</div>
+        <div class="inline-success-text">
+          <h3>You're Locked In!</h3>
+          <p>You'll get an official link the moment Eakoma's next song or video drops.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. STREAMING & SOCIAL ACTION LINKS -->
     <nav class="links-list" aria-label="Official Streaming and Social Links">
 
       <div class="section-label"><span>Listen &amp; Watch</span></div>
 
-      <!-- 1. Spotify (Coming Soon) -->
-      <div class="link-btn coming-soon" data-link="Spotify">
+      <!-- 1. Spotify (Coming Soon — Scrolls/Focuses Top Drop Alert Box) -->
+      <button type="button" class="link-btn coming-soon" id="spotifyNotifyBtn" data-link="Spotify">
         <div class="link-left">
           <div class="link-icon icon-spotify">
-            <svg viewBox="0 0 24 24">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.563.387-.857.207-2.35-1.435-5.308-1.76-8.792-.963-.335.077-.67-.133-.746-.468-.077-.334.132-.67.467-.746 3.808-.87 7.076-.505 9.72 1.113.295.18.388.563.208.857zm1.224-2.72c-.227.368-.711.484-1.08.257-2.69-1.654-6.79-2.133-9.972-1.168-.413.125-.853-.109-.978-.522-.125-.413.109-.853.522-.978 3.633-1.102 8.153-.57 11.251 1.332.369.227.484.71.257 1.079zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71c-.494.15-1.02-.13-1.17-.624-.15-.494.13-1.02.624-1.17 3.532-1.072 9.404-.868 13.115 1.335.445.264.59.84.327 1.285-.264.444-.84.59-1.284.327z"/>
             </svg>
           </div>
           <div class="link-text">
             <span class="link-label">Spotify</span>
-            <span class="link-hint">Follow &amp; stream full catalog</span>
+            <span class="link-hint">Coming soon &bull; Tap to get notified</span>
           </div>
         </div>
-        <span class="badge-coming-soon">Coming Soon</span>
-      </div>
+        <span class="badge-coming-soon" id="spotifyBadgeText">Notify Me</span>
+      </button>
 
       <!-- 2. Audiomack -->
       <a href="https://audiomack.com/iameakoma" target="_blank" rel="noopener noreferrer" class="link-btn" data-link="Audiomack">
         <div class="link-left">
           <div class="link-icon icon-audiomack">
-            <svg viewBox="0 0 24 24">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
             </svg>
           </div>
@@ -618,7 +1004,7 @@
             <span class="link-hint">Stream all tracks &amp; exclusives</span>
           </div>
         </div>
-        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </a>
@@ -627,7 +1013,7 @@
       <a href="https://www.youtube.com/@iameakoma" target="_blank" rel="noopener noreferrer" class="link-btn" data-link="YouTube">
         <div class="link-left">
           <div class="link-icon icon-youtube">
-            <svg viewBox="0 0 24 24">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
             </svg>
           </div>
@@ -636,7 +1022,7 @@
             <span class="link-hint">Watch official videos &amp; visuals</span>
           </div>
         </div>
-        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </a>
@@ -647,7 +1033,7 @@
       <a href="https://www.instagram.com/iameakoma/" target="_blank" rel="noopener noreferrer" class="link-btn" data-link="Instagram">
         <div class="link-left">
           <div class="link-icon icon-instagram">
-            <svg viewBox="0 0 24 24">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
             </svg>
           </div>
@@ -656,7 +1042,7 @@
             <span class="link-hint">@iameakoma</span>
           </div>
         </div>
-        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </a>
@@ -665,7 +1051,7 @@
       <a href="https://www.tiktok.com/@iameakoma" target="_blank" rel="noopener noreferrer" class="link-btn" data-link="TikTok">
         <div class="link-left">
           <div class="link-icon icon-tiktok">
-            <svg viewBox="0 0 24 24">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
             </svg>
           </div>
@@ -674,7 +1060,7 @@
             <span class="link-hint">@iameakoma</span>
           </div>
         </div>
-        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </a>
@@ -683,7 +1069,7 @@
       <a href="https://web.facebook.com/profile.php?id=61586498300616" target="_blank" rel="noopener noreferrer" class="link-btn" data-link="Facebook">
         <div class="link-left">
           <div class="link-icon icon-facebook">
-            <svg viewBox="0 0 24 24">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
             </svg>
           </div>
@@ -692,14 +1078,14 @@
             <span class="link-hint">Official Eakoma page</span>
           </div>
         </div>
-        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </a>
 
     </nav>
 
-    <!-- 3. FOOTER -->
+    <!-- 4. FOOTER -->
     <footer>
       <div class="footer-brand" id="footerBrand">Eakoma</div>
       <div class="footer-tagline">&copy; 2026 Eakoma &bull; Say Trackstar</div>
@@ -707,11 +1093,14 @@
 
   </div>
 
-  <!-- SIMPLE PRIVATE 24H VISITOR CHECK (Triple-tap "Eakoma" in footer or visit #stats) -->
-  <dialog id="statsModal" closedby="any">
+  <!-- =========================================================
+       SIMPLE PRIVATE 24H VISITOR CHECK + VIP SUBSCRIBER VAULT
+       (Triple-tap "Eakoma" in footer or visit #stats)
+       ========================================================= -->
+  <dialog id="statsModal" closedby="any" aria-labelledby="statsModalTitle">
     <div class="stats-top">
-      <span class="stats-title">Last 24 Hours</span>
-      <button type="button" class="stats-close" id="closeStatsBtn" aria-label="Close">&times;</button>
+      <h2 class="stats-title" id="statsModalTitle">Last 24 Hours &amp; VIP List</h2>
+      <button type="button" class="stats-close" id="closeStatsBtn" aria-label="Close analytics">&times;</button>
     </div>
 
     <div class="visits-hero-box">
@@ -721,14 +1110,43 @@
 
     <div class="clicks-list" id="clicks24hList"></div>
 
-    <button type="button" class="stats-reset-btn" id="resetStatsBtn">Reset All Numbers to 0</button>
+    <!-- VIP Drop Alert Subscribers Vault -->
+    <div class="vip-vault-section">
+      <div class="vip-vault-header">
+        <span class="vip-vault-title">VIP Drop List (SMS / Email)</span>
+        <span class="vip-count-pill" id="vipSubscribersCount">0</span>
+      </div>
+
+      <div class="vip-list-box" id="vipSubscribersList"></div>
+
+      <div class="vip-actions-row">
+        <button type="button" class="vip-action-btn" id="copyVipNumbersBtn">Copy Contacts</button>
+        <button type="button" class="vip-action-btn" id="exportVipCsvBtn">Download CSV</button>
+      </div>
+    </div>
+
+    <button type="button" class="stats-reset-btn" id="resetStatsBtn">Reset 24h Visit Counter</button>
   </dialog>
 
   <script>
     (function () {
       const STORAGE_KEY = 'eakoma_simple_24h_v1';
+      const SUBS_STORAGE_KEY = 'eakoma_vip_subscribers_v1';
       const DAY_MS = 24 * 60 * 60 * 1000;
-      const LINKS = ['Audiomack', 'YouTube', 'Instagram', 'TikTok', 'Facebook'];
+      const LINKS = ['Spotify', 'Audiomack', 'YouTube', 'Instagram', 'TikTok', 'Facebook'];
+
+      // Fallback for browsers without native <dialog closedby="any"> support (e.g. Safari)
+      if (!('closedBy' in HTMLDialogElement.prototype)) {
+        const outside = (e, dialog) => {
+          const r = dialog.getBoundingClientRect();
+          return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
+        };
+        for (const dialog of document.querySelectorAll('dialog[closedby="any"]')) {
+          let pressedOutside = false;
+          dialog.addEventListener('pointerdown', (e) => { pressedOutside = outside(e, dialog); });
+          dialog.addEventListener('pointerup', (e) => { if (pressedOutside && outside(e, dialog)) dialog.close(); });
+        }
+      }
 
       // Clear any old test keys
       try {
@@ -757,8 +1175,24 @@
         } catch (e) {}
       }
 
+      function getSubscribers() {
+        try {
+          const raw = localStorage.getItem(SUBS_STORAGE_KEY);
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) return parsed;
+          }
+        } catch (e) {}
+        return [];
+      }
+
+      function saveSubscribers(list) {
+        try {
+          localStorage.setItem(SUBS_STORAGE_KEY, JSON.stringify(list));
+        } catch (e) {}
+      }
+
       function recordVisit() {
-        // Keep at 0 while previewing locally on Desktop (file://); only count live web visits
         if (location.protocol === 'file:') return;
         if (sessionStorage.getItem('eakoma_visited_session') === '1') return;
         sessionStorage.setItem('eakoma_visited_session', '1');
@@ -798,16 +1232,139 @@
         });
       });
 
-      // Render simple 24h modal
+      // =========================================================
+      // TOP INLINE DROP ALERT FORM LOGIC
+      // =========================================================
+      const inlineVipCard = document.getElementById('inlineVipCard');
+      const inlineFormContainer = document.getElementById('inlineFormContainer');
+      const inlineSuccessContainer = document.getElementById('inlineSuccessContainer');
+      const inlineNotifyForm = document.getElementById('inlineNotifyForm');
+      const fanContactInput = document.getElementById('fanContactInput');
+      const fanContactError = document.getElementById('fanContactError');
+      const notifySubmitBtn = document.getElementById('notifySubmitBtn');
+      const spotifyBadgeText = document.getElementById('spotifyBadgeText');
+
+      let activeNotifySource = 'Top Drop Box';
+
+      // Tapping "Spotify (Coming Soon)" focuses the top box & highlights it
+      document.getElementById('spotifyNotifyBtn')?.addEventListener('click', () => {
+        activeNotifySource = 'Spotify Pre-Save';
+        inlineVipCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        inlineVipCard.classList.add('highlight-pulse');
+        setTimeout(() => inlineVipCard.classList.remove('highlight-pulse'), 1400);
+        if (!inlineFormContainer.hidden) {
+          setTimeout(() => fanContactInput?.focus(), 300);
+        }
+      });
+
+      function validateContactValue(val) {
+        const trimmed = val.trim();
+        if (!trimmed) {
+          return 'Please enter your phone number or email address.';
+        }
+        const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed);
+        const digits = trimmed.replace(/\D/g, '');
+        const isPhone = digits.length >= 7 && digits.length <= 15;
+        if (!isEmail && !isPhone) {
+          return 'Please enter a valid phone number (e.g. 024... or +233...) or email.';
+        }
+        return '';
+      }
+
+      // Validate on blur, clear error on input
+      fanContactInput?.addEventListener('blur', () => {
+        if (!fanContactInput.value.trim()) return;
+        const msg = validateContactValue(fanContactInput.value);
+        fanContactInput.setCustomValidity(msg);
+        fanContactError.textContent = msg;
+      });
+
+      fanContactInput?.addEventListener('input', () => {
+        fanContactInput.setCustomValidity('');
+        fanContactError.textContent = '';
+      });
+
+      inlineNotifyForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const contactVal = fanContactInput.value.trim();
+        const errorMsg = validateContactValue(contactVal);
+
+        if (errorMsg) {
+          fanContactInput.setCustomValidity(errorMsg);
+          fanContactError.textContent = errorMsg;
+          fanContactInput.focus();
+          return;
+        }
+
+        notifySubmitBtn.disabled = true;
+
+        const entry = {
+          id: 'sub_' + Date.now(),
+          name: 'VIP Fan',
+          contact: contactVal,
+          kind: contactVal.includes('@') ? 'email' : 'phone',
+          source: activeNotifySource,
+          ts: Date.now()
+        };
+
+        const subs = getSubscribers();
+        const alreadyExists = subs.some((s) => s.contact.toLowerCase() === entry.contact.toLowerCase());
+        if (!alreadyExists) {
+          subs.unshift(entry);
+          saveSubscribers(subs);
+        }
+
+        if (spotifyBadgeText) spotifyBadgeText.textContent = 'Notified ✓';
+
+        if (location.protocol.startsWith('http')) {
+          fetch('/api/analytics', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              type: 'subscribe',
+              name: entry.name,
+              contact: entry.contact,
+              source: entry.source,
+              ts: entry.ts
+            }),
+            keepalive: true
+          }).catch(() => {});
+        }
+
+        inlineNotifyForm.reset();
+        inlineFormContainer.hidden = true;
+        inlineSuccessContainer.hidden = false;
+      });
+
+      // =========================================================
+      // PRIVATE 24H ANALYTICS & VIP SUBSCRIBER VAULT
+      // =========================================================
       const statsModal = document.getElementById('statsModal');
       const visits24hCount = document.getElementById('visits24hCount');
       const clicks24hList = document.getElementById('clicks24hList');
+      const vipSubscribersCount = document.getElementById('vipSubscribersCount');
+      const vipSubscribersList = document.getElementById('vipSubscribersList');
+      let latestSubscribers = [];
+
+      function mergeSubscribers(localList, remoteList) {
+        const seen = new Set();
+        const merged = [];
+        [...(remoteList || []), ...(localList || [])].forEach((item) => {
+          if (!item || !item.contact) return;
+          const key = String(item.contact).toLowerCase();
+          if (!seen.has(key)) {
+            seen.add(key);
+            merged.push(item);
+          }
+        });
+        return merged.sort((a, b) => (b.ts || 0) - (a.ts || 0));
+      }
 
       async function openStats() {
         const cutoff = Date.now() - DAY_MS;
         const store = getStore();
+        const localSubs = getSubscribers();
 
-        // Sync from /api/analytics if hosted on Vercel
         if (location.protocol.startsWith('http')) {
           try {
             const res = await fetch('/api/analytics?window=24h');
@@ -816,7 +1373,9 @@
               if (data && Array.isArray(data.events)) {
                 const visits = data.events.filter((e) => e.type === 'pageview' && e.ts >= cutoff);
                 const clicks = data.events.filter((e) => e.type === 'click' && e.ts >= cutoff);
-                renderStats(visits.length, clicks);
+                latestSubscribers = mergeSubscribers(localSubs, data.subscribers);
+                saveSubscribers(latestSubscribers);
+                renderStats(visits.length, clicks, latestSubscribers);
                 statsModal.showModal();
                 return;
               }
@@ -826,11 +1385,12 @@
 
         const recentVisits = store.visits.filter((ts) => ts >= cutoff).length;
         const recentClicks = store.clicks.filter((c) => c.ts >= cutoff);
-        renderStats(recentVisits, recentClicks);
+        latestSubscribers = mergeSubscribers(localSubs, []);
+        renderStats(recentVisits, recentClicks, latestSubscribers);
         statsModal.showModal();
       }
 
-      function renderStats(visitCount, clickEvents) {
+      function renderStats(visitCount, clickEvents, subscribers) {
         visits24hCount.textContent = visitCount.toLocaleString();
         const counts = {};
         LINKS.forEach((l) => { counts[l] = 0; });
@@ -845,7 +1405,82 @@
             <strong>${counts[name] || 0}</strong>
           </div>
         `).join('');
+
+        // Render VIP Subscribers safely using DOM nodes
+        vipSubscribersCount.textContent = String(subscribers.length);
+        vipSubscribersList.replaceChildren();
+
+        if (!subscribers.length) {
+          const emptyEl = document.createElement('div');
+          emptyEl.className = 'vip-empty';
+          emptyEl.textContent = 'No drop alert sign-ups yet.';
+          vipSubscribersList.appendChild(emptyEl);
+          return;
+        }
+
+        subscribers.forEach((sub) => {
+          const row = document.createElement('div');
+          row.className = 'vip-item';
+
+          const left = document.createElement('div');
+          left.className = 'vip-item-left';
+
+          const contactEl = document.createElement('span');
+          contactEl.className = 'vip-contact';
+          contactEl.textContent = sub.contact;
+
+          const metaEl = document.createElement('span');
+          metaEl.className = 'vip-meta';
+          const dateStr = sub.ts ? new Date(sub.ts).toLocaleDateString() : '';
+          metaEl.textContent = `${sub.source || 'Drop Alert'}${dateStr ? ' • ' + dateStr : ''}`;
+
+          left.appendChild(contactEl);
+          left.appendChild(metaEl);
+          row.appendChild(left);
+          vipSubscribersList.appendChild(row);
+        });
       }
+
+      // Copy all contacts for SMS Sender ID blast (e.g. Arkesel / Hubtel / Twilio)
+      document.getElementById('copyVipNumbersBtn')?.addEventListener('click', async (e) => {
+        const btn = e.currentTarget;
+        if (!latestSubscribers.length) {
+          btn.textContent = 'List is empty';
+          setTimeout(() => { btn.textContent = 'Copy Contacts'; }, 1500);
+          return;
+        }
+        const contactsText = latestSubscribers.map((s) => s.contact).join(', ');
+        try {
+          await navigator.clipboard.writeText(contactsText);
+          btn.textContent = 'Copied! ✓';
+        } catch (err) {
+          btn.textContent = 'Copy failed';
+        }
+        setTimeout(() => { btn.textContent = 'Copy Contacts'; }, 1800);
+      });
+
+      // Export VIP Subscribers as CSV
+      document.getElementById('exportVipCsvBtn')?.addEventListener('click', () => {
+        if (!latestSubscribers.length) return;
+        const header = 'Contact,Type,Source,Date\n';
+        const rows = latestSubscribers.map((s) => {
+          const safeContact = '"' + String(s.contact || '').replace(/"/g, '""') + '"';
+          const safeType = '"' + String(s.kind || 'phone').replace(/"/g, '""') + '"';
+          const safeSource = '"' + String(s.source || 'Drop Alert').replace(/"/g, '""') + '"';
+          const safeDate = '"' + (s.ts ? new Date(s.ts).toISOString() : '') + '"';
+          return [safeContact, safeType, safeSource, safeDate].join(',');
+        }).join('\n');
+
+        const blob = new Blob([header + rows], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'eakoma-vip-drop-list.csv';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      });
 
       // Triple-click "Eakoma" in footer to open 24h visitor check
       let tapCount = 0;
@@ -871,7 +1506,7 @@
       document.getElementById('closeStatsBtn')?.addEventListener('click', () => statsModal.close());
       document.getElementById('resetStatsBtn')?.addEventListener('click', () => {
         saveStore({ visits: [], clicks: [] });
-        renderStats(0, []);
+        renderStats(0, [], latestSubscribers);
       });
     })();
   </script>
