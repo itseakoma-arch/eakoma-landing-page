@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eakoma | A New Wave Of Gospel</title>
-  <meta name="description" content="Official music, streaming platforms, drop alerts, and social channels for Eakoma — Global Ambassador Of Christ • Say Trackstar.">
+  <meta name="description" content="Official music, streaming platforms, and social channels for Eakoma — Global Ambassador Of Christ • Say Trackstar.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%2307080b%22 stroke=%22%23d4af37%22 stroke-width=%228%22/><text x=%2250%22 y=%2264%22 font-size=%2240%22 font-family=%22sans-serif%22 font-weight=%22900%22 fill=%22%23ffffff%22 text-anchor=%22middle%22>E</text></svg>">
 
   <style>
@@ -98,7 +98,7 @@
       z-index: 2;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.75rem;
     }
 
     @keyframes fadeUp {
@@ -114,13 +114,13 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding-top: clamp(2rem, 5vw, 3.2rem);
+      padding-top: clamp(2.5rem, 6vw, 3.8rem);
       animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     .avatar-wrap {
       position: relative;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.4rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -142,8 +142,8 @@
     }
 
     .avatar-ring {
-      width: clamp(160px, 34vw, 200px);
-      height: clamp(160px, 34vw, 200px);
+      width: clamp(175px, 36vw, 215px);
+      height: clamp(175px, 36vw, 215px);
       border-radius: 50%;
       padding: 4px;
       background: linear-gradient(135deg, #ffffff 0%, #f5d77f 30%, #d4af37 65%, #8a661b 100%);
@@ -182,7 +182,7 @@
       text-transform: uppercase;
       padding: 0.4rem 1.05rem;
       border-radius: 999px;
-      margin-bottom: 0.65rem;
+      margin-bottom: 0.7rem;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
@@ -194,25 +194,25 @@
     }
 
     .artist-title {
-      font-size: clamp(2.6rem, 9vw, 3.9rem);
+      font-size: clamp(2.8rem, 9.5vw, 4.1rem);
       font-weight: 900;
       letter-spacing: -0.02em;
       color: #ffffff;
-      line-height: 1.04;
+      line-height: 1.03;
       text-transform: uppercase;
       text-shadow: 0 4px 30px rgba(0, 0, 0, 0.95), 0 0 32px rgba(212, 175, 55, 0.45);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.45rem;
     }
 
     .tagline-row {
       display: inline-flex;
       align-items: center;
       gap: 0.65rem;
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.5rem;
     }
 
     .genre-tagline {
-      font-size: 0.98rem;
+      font-size: 1rem;
       color: var(--gold-champagne);
       font-weight: 700;
       letter-spacing: 0.16em;
@@ -245,7 +245,7 @@
     }
 
     .artist-ethos {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
       max-width: 390px;
       font-weight: 500;
@@ -254,215 +254,7 @@
     }
 
     /* =========================================================
-       2. TOP INLINE VIP DROP ALERT BOX (ALWAYS OPEN AT TOP)
-       ========================================================= */
-    .vip-hero-card {
-      width: 100%;
-      background: linear-gradient(145deg, rgba(212, 175, 55, 0.16) 0%, rgba(15, 17, 23, 0.92) 55%, rgba(12, 14, 20, 0.96) 100%);
-      border: 1.5px solid rgba(212, 175, 55, 0.52);
-      border-radius: var(--radius-card);
-      padding: 1.25rem 1.3rem;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 28px rgba(212, 175, 55, 0.16);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .vip-hero-card.highlight-pulse {
-      border-color: var(--gold-bright);
-      box-shadow: 0 0 40px rgba(255, 215, 0, 0.48), 0 16px 36px rgba(0, 0, 0, 0.75);
-    }
-
-    .vip-card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .vip-card-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-    }
-
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--spotify-green);
-      box-shadow: 0 0 10px var(--spotify-green);
-      animation: dotPulse 1.8s ease-in-out infinite;
-    }
-
-    @keyframes dotPulse {
-      0%, 100% { transform: scale(0.9); opacity: 0.75; }
-      50% { transform: scale(1.2); opacity: 1; }
-    }
-
-    .vip-card-title {
-      font-size: 1.12rem;
-      font-weight: 800;
-      color: var(--white-pure);
-      line-height: 1.25;
-      margin-bottom: 0.25rem;
-    }
-
-    .vip-card-desc {
-      font-size: 0.83rem;
-      color: var(--text-muted);
-      line-height: 1.42;
-      margin-bottom: 0.95rem;
-    }
-
-    .inline-form-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      width: 100%;
-    }
-
-    .form-label {
-      display: inline-block;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--gold-light);
-      letter-spacing: 0.04em;
-      margin-block-end: 0.32rem;
-      padding: 6px 0;
-      margin-top: -6px;
-    }
-
-    .form-input {
-      width: 100%;
-      font-size: 1rem;
-      font-family: inherit;
-      padding: 0.76rem 0.95rem;
-      min-height: 48px;
-      border-radius: 12px;
-      border: 1px solid rgba(212, 175, 55, 0.36);
-      background: rgba(6, 7, 10, 0.75);
-      color: var(--white-pure);
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    @media (pointer: coarse) {
-      .form-input {
-        min-height: 52px;
-      }
-    }
-
-    .form-input::placeholder {
-      color: rgba(226, 232, 240, 0.42);
-    }
-
-    .form-input:focus-visible {
-      outline: 2px solid var(--gold-bright);
-      outline-offset: 2px;
-      border-color: var(--gold-bright);
-    }
-
-    .form-input:invalid:user-invalid {
-      border-color: #ff6b6b;
-    }
-
-    .field-hint {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      margin-top: 0.3rem;
-      line-height: 1.35;
-    }
-
-    .field-error {
-      font-size: 0.76rem;
-      color: #ff8787;
-      font-weight: 600;
-      margin-top: 0.25rem;
-      min-height: 1rem;
-    }
-
-    .notify-submit-btn {
-      width: 100%;
-      min-height: 48px;
-      padding: 0.85rem 1.2rem;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 215, 0, 0.6);
-      background: linear-gradient(135deg, #fbeea4 0%, #d4af37 52%, #b58922 100%);
-      color: #06070a;
-      font-size: 0.96rem;
-      font-weight: 800;
-      letter-spacing: 0.03em;
-      cursor: pointer;
-      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.28);
-      transition: transform 0.2s ease, filter 0.2s ease;
-    }
-
-    .notify-submit-btn:hover {
-      filter: brightness(1.06);
-      transform: translateY(-1px);
-    }
-
-    .notify-submit-btn:focus-visible {
-      outline: 2px solid var(--white-pure);
-      outline-offset: 2px;
-    }
-
-    .notify-submit-btn:disabled {
-      opacity: 0.65;
-      cursor: default;
-      transform: none;
-    }
-
-    .inline-success-box {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      padding: 0.45rem 0.2rem;
-    }
-
-    .inline-success-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: rgba(30, 215, 96, 0.16);
-      border: 1px solid rgba(30, 215, 96, 0.45);
-      color: var(--spotify-green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      font-weight: 900;
-      flex-shrink: 0;
-    }
-
-    .inline-success-text h3 {
-      font-size: 0.98rem;
-      font-weight: 800;
-      color: var(--white-pure);
-      margin-bottom: 0.12rem;
-    }
-
-    .inline-success-text p {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.38;
-    }
-
-    /* =========================================================
-       3. SECTION DIVIDERS & ACTION BUTTONS (KAY MAGMA STYLE)
+       2. SECTION DIVIDERS & ACTION BUTTONS (KAY MAGMA STYLE)
        ========================================================= */
     .section-label {
       display: flex;
@@ -495,7 +287,7 @@
       flex-direction: column;
       gap: 0.85rem;
       width: 100%;
-      animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+      animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
     }
 
     .link-btn {
@@ -623,14 +415,14 @@
     }
 
     /* =========================================================
-       4. FOOTER (TRIPLE-TAP TO VIEW 24H VISITORS & VIP DROP LIST)
+       3. FOOTER (TRIPLE-TAP TO VIEW 24H VISITORS)
        ========================================================= */
     footer {
       text-align: center;
-      margin-top: 1rem;
-      padding-top: 1.6rem;
+      margin-top: 1.25rem;
+      padding-top: 1.75rem;
       border-top: 1px solid rgba(212, 175, 55, 0.14);
-      animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+      animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
       user-select: none;
     }
 
@@ -651,7 +443,7 @@
     }
 
     /* =========================================================
-       5. PRIVATE 24-HOUR OWNER VAULT MODAL (#stats)
+       4. MODALS: SPOTIFY NOTIFY DIALOG & PRIVATE 24H VAULT
        ========================================================= */
     dialog {
       margin: auto;
@@ -678,24 +470,27 @@
       overscroll-behavior: contain;
     }
 
-    .stats-top {
+    .modal-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
       padding-bottom: 0.75rem;
       border-bottom: 1px solid rgba(212, 175, 55, 0.16);
     }
 
-    .stats-title {
-      font-size: 0.95rem;
+    .modal-title {
+      font-size: 0.96rem;
       font-weight: 800;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       color: var(--gold-champagne);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
     }
 
-    .stats-close {
+    .modal-close {
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.12);
       color: #fff;
@@ -709,16 +504,164 @@
       justify-content: center;
     }
 
-    .stats-close:hover {
+    .modal-close:hover {
       background: rgba(212, 175, 55, 0.2);
       border-color: rgba(212, 175, 55, 0.45);
     }
 
-    .stats-close:focus-visible {
+    .modal-close:focus-visible {
       outline: 2px solid var(--gold-bright);
       outline-offset: 2px;
     }
 
+    .spotify-modal-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: 1rem;
+    }
+
+    .modal-form-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .form-label {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 0.03em;
+      margin-block-end: 0.2rem;
+      padding: 6px 0;
+      margin-top: -6px;
+    }
+
+    .field-hint {
+      font-size: 0.73rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+      line-height: 1.35;
+    }
+
+    .form-input {
+      width: 100%;
+      font-size: 1rem;
+      font-family: inherit;
+      padding: 0.76rem 0.95rem;
+      min-height: 48px;
+      border-radius: 12px;
+      border: 1px solid rgba(212, 175, 55, 0.36);
+      background: rgba(6, 7, 10, 0.85);
+      color: var(--white-pure);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    @media (pointer: coarse) {
+      .form-input {
+        min-height: 52px;
+      }
+    }
+
+    .form-input::placeholder {
+      color: rgba(226, 232, 240, 0.42);
+    }
+
+    .form-input:focus-visible {
+      outline: 2px solid var(--gold-bright);
+      outline-offset: 2px;
+      border-color: var(--gold-bright);
+    }
+
+    .form-input:invalid:user-invalid {
+      border-color: #ff6b6b;
+    }
+
+    .field-error {
+      font-size: 0.76rem;
+      color: #ff8787;
+      font-weight: 600;
+      margin-top: 0.25rem;
+      min-height: 1rem;
+    }
+
+    .notify-submit-btn {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.85rem 1.2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 215, 0, 0.6);
+      background: linear-gradient(135deg, #fbeea4 0%, #d4af37 52%, #b58922 100%);
+      color: #06070a;
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.28);
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .notify-submit-btn:hover {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+    }
+
+    .notify-submit-btn:focus-visible {
+      outline: 2px solid var(--white-pure);
+      outline-offset: 2px;
+    }
+
+    .notify-submit-btn:disabled {
+      opacity: 0.65;
+      cursor: default;
+      transform: none;
+    }
+
+    .modal-success-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.6rem;
+      padding: 0.75rem 0.25rem 0.25rem;
+    }
+
+    .modal-success-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(30, 215, 96, 0.16);
+      border: 1px solid rgba(30, 215, 96, 0.45);
+      color: var(--spotify-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 900;
+    }
+
+    .modal-success-box h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--white-pure);
+    }
+
+    .modal-success-box p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-bottom: 0.35rem;
+    }
+
+    /* Private 24h Stats Modal Styles */
     .visits-hero-box {
       text-align: center;
       background: rgba(212, 175, 55, 0.08);
@@ -797,7 +740,7 @@
     }
 
     .vip-list-box {
-      max-height: 165px;
+      max-height: 150px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
@@ -920,62 +863,12 @@
       <p class="artist-ethos">Small With A Big God &bull; Say Trackstar</p>
     </header>
 
-    <!-- 2. ALWAYS-VISIBLE VIP DROP ALERT BOX AT THE VERY TOP -->
-    <section class="vip-hero-card" id="inlineVipCard" aria-labelledby="vipCardHeading">
-      <div id="inlineFormContainer">
-        <div class="vip-card-top">
-          <span class="vip-card-pill">
-            <span class="live-dot" aria-hidden="true"></span>
-            Official Drop Alerts
-          </span>
-        </div>
-
-        <h2 class="vip-card-title" id="vipCardHeading">Get New Songs &amp; Videos Sent to You First</h2>
-        <p class="vip-card-desc">
-          Don't let the algorithm hide new releases. Drop your number or email for an instant link when Eakoma drops.
-        </p>
-
-        <form id="inlineNotifyForm" class="inline-form-grid" action="/api/analytics" method="POST" novalidate>
-          <div class="form-group">
-            <label class="form-label" for="fanContactInput">Phone Number or Email</label>
-            <input
-              type="text"
-              id="fanContactInput"
-              name="contact"
-              class="form-input"
-              autocomplete="tel"
-              autocorrect="off"
-              autocapitalize="off"
-              spellcheck="false"
-              enterkeyhint="done"
-              maxlength="140"
-              required
-              aria-describedby="fanContactHint fanContactError"
-              placeholder="Enter phone number or email..."
-            >
-            <span id="fanContactHint" class="field-hint">100% private. Only texts/emails when new music or videos drop.</span>
-            <div id="fanContactError" class="field-error" aria-live="polite"></div>
-          </div>
-
-          <button type="submit" class="notify-submit-btn" id="notifySubmitBtn">Notify Me on New Drops</button>
-        </form>
-      </div>
-
-      <div id="inlineSuccessContainer" class="inline-success-box" hidden>
-        <div class="inline-success-icon" aria-hidden="true">&#10003;</div>
-        <div class="inline-success-text">
-          <h3>You're Locked In!</h3>
-          <p>You'll get an official link the moment Eakoma's next song or video drops.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. STREAMING & SOCIAL ACTION LINKS -->
+    <!-- 2. STREAMING & SOCIAL ACTION LINKS (NO EXTRA CARDS ABOVE) -->
     <nav class="links-list" aria-label="Official Streaming and Social Links">
 
       <div class="section-label"><span>Listen &amp; Watch</span></div>
 
-      <!-- 1. Spotify (Coming Soon — Scrolls/Focuses Top Drop Alert Box) -->
+      <!-- 1. Spotify (Coming Soon — Opens Notify Option ONLY When Clicked) -->
       <button type="button" class="link-btn coming-soon" id="spotifyNotifyBtn" data-link="Spotify">
         <div class="link-left">
           <div class="link-icon icon-spotify">
@@ -985,10 +878,10 @@
           </div>
           <div class="link-text">
             <span class="link-label">Spotify</span>
-            <span class="link-hint">Coming soon &bull; Tap to get notified</span>
+            <span class="link-hint">Follow &amp; stream full catalog</span>
           </div>
         </div>
-        <span class="badge-coming-soon" id="spotifyBadgeText">Notify Me</span>
+        <span class="badge-coming-soon" id="spotifyBadgeText">Coming Soon</span>
       </button>
 
       <!-- 2. Audiomack -->
@@ -1085,7 +978,7 @@
 
     </nav>
 
-    <!-- 4. FOOTER -->
+    <!-- 3. FOOTER -->
     <footer>
       <div class="footer-brand" id="footerBrand">Eakoma</div>
       <div class="footer-tagline">&copy; 2026 Eakoma &bull; Say Trackstar</div>
@@ -1094,13 +987,62 @@
   </div>
 
   <!-- =========================================================
-       SIMPLE PRIVATE 24H VISITOR CHECK + VIP SUBSCRIBER VAULT
+       SPOTIFY NOTIFY MODAL (OPENS ONLY WHEN CLICKING SPOTIFY)
+       ========================================================= -->
+  <dialog id="spotifyModal" closedby="any" aria-labelledby="spotifyModalTitle">
+    <div class="modal-top">
+      <h2 class="modal-title" id="spotifyModalTitle">Spotify Coming Soon</h2>
+      <button type="button" class="modal-close" id="closeSpotifyModalBtn" aria-label="Close Spotify notification dialog">&times;</button>
+    </div>
+
+    <div id="spotifyFormContainer">
+      <p class="spotify-modal-desc">
+        Eakoma's Spotify catalog is dropping soon. Leave your phone number or email to get the direct link the moment it goes live.
+      </p>
+
+      <form id="spotifyNotifyForm" class="modal-form-grid" action="/api/analytics" method="POST" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="fanContactInput">Phone Number or Email</label>
+          <span id="fanContactHint" class="field-hint">Format: 024... / +233... or you@example.com</span>
+          <input
+            type="text"
+            id="fanContactInput"
+            name="contact"
+            class="form-input"
+            autocomplete="tel"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            enterkeyhint="done"
+            maxlength="140"
+            required
+            autofocus
+            aria-describedby="fanContactHint fanContactError"
+            placeholder="Enter phone number or email..."
+          >
+          <div id="fanContactError" class="field-error" aria-live="polite"></div>
+        </div>
+
+        <button type="submit" class="notify-submit-btn" id="notifySubmitBtn">Notify Me When Live</button>
+      </form>
+    </div>
+
+    <div id="spotifySuccessContainer" class="modal-success-box" hidden>
+      <div class="modal-success-icon" aria-hidden="true">&#10003;</div>
+      <h3>You're on the List!</h3>
+      <p>We'll send you the official Spotify link as soon as Eakoma's catalog is live.</p>
+      <button type="button" class="notify-submit-btn" id="doneSpotifyModalBtn">Done</button>
+    </div>
+  </dialog>
+
+  <!-- =========================================================
+       PRIVATE 24H VISITOR CHECK + SPOTIFY SIGN-UPS VAULT
        (Triple-tap "Eakoma" in footer or visit #stats)
        ========================================================= -->
   <dialog id="statsModal" closedby="any" aria-labelledby="statsModalTitle">
-    <div class="stats-top">
-      <h2 class="stats-title" id="statsModalTitle">Last 24 Hours &amp; VIP List</h2>
-      <button type="button" class="stats-close" id="closeStatsBtn" aria-label="Close analytics">&times;</button>
+    <div class="modal-top">
+      <h2 class="modal-title" id="statsModalTitle">Last 24 Hours</h2>
+      <button type="button" class="modal-close" id="closeStatsBtn" aria-label="Close analytics">&times;</button>
     </div>
 
     <div class="visits-hero-box">
@@ -1110,10 +1052,10 @@
 
     <div class="clicks-list" id="clicks24hList"></div>
 
-    <!-- VIP Drop Alert Subscribers Vault -->
+    <!-- Spotify Notification Sign-ups -->
     <div class="vip-vault-section">
       <div class="vip-vault-header">
-        <span class="vip-vault-title">VIP Drop List (SMS / Email)</span>
+        <span class="vip-vault-title">Spotify Notify List</span>
         <span class="vip-count-pill" id="vipSubscribersCount">0</span>
       </div>
 
@@ -1233,29 +1175,28 @@
       });
 
       // =========================================================
-      // TOP INLINE DROP ALERT FORM LOGIC
+      // SPOTIFY MODAL LOGIC (OPENS ONLY WHEN SPOTIFY IS CLICKED)
       // =========================================================
-      const inlineVipCard = document.getElementById('inlineVipCard');
-      const inlineFormContainer = document.getElementById('inlineFormContainer');
-      const inlineSuccessContainer = document.getElementById('inlineSuccessContainer');
-      const inlineNotifyForm = document.getElementById('inlineNotifyForm');
+      const spotifyModal = document.getElementById('spotifyModal');
+      const spotifyFormContainer = document.getElementById('spotifyFormContainer');
+      const spotifySuccessContainer = document.getElementById('spotifySuccessContainer');
+      const spotifyNotifyForm = document.getElementById('spotifyNotifyForm');
       const fanContactInput = document.getElementById('fanContactInput');
       const fanContactError = document.getElementById('fanContactError');
       const notifySubmitBtn = document.getElementById('notifySubmitBtn');
       const spotifyBadgeText = document.getElementById('spotifyBadgeText');
 
-      let activeNotifySource = 'Top Drop Box';
-
-      // Tapping "Spotify (Coming Soon)" focuses the top box & highlights it
       document.getElementById('spotifyNotifyBtn')?.addEventListener('click', () => {
-        activeNotifySource = 'Spotify Pre-Save';
-        inlineVipCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        inlineVipCard.classList.add('highlight-pulse');
-        setTimeout(() => inlineVipCard.classList.remove('highlight-pulse'), 1400);
-        if (!inlineFormContainer.hidden) {
-          setTimeout(() => fanContactInput?.focus(), 300);
-        }
+        spotifyFormContainer.hidden = false;
+        spotifySuccessContainer.hidden = true;
+        notifySubmitBtn.disabled = false;
+        fanContactError.textContent = '';
+        fanContactInput.setCustomValidity('');
+        spotifyModal.showModal();
       });
+
+      document.getElementById('closeSpotifyModalBtn')?.addEventListener('click', () => spotifyModal.close());
+      document.getElementById('doneSpotifyModalBtn')?.addEventListener('click', () => spotifyModal.close());
 
       function validateContactValue(val) {
         const trimmed = val.trim();
@@ -1271,20 +1212,25 @@
         return '';
       }
 
-      // Validate on blur, clear error on input
+      const syncAriaInvalid = (el) => {
+        el.setAttribute('aria-invalid', el.matches(':user-invalid') ? 'true' : 'false');
+      };
+
       fanContactInput?.addEventListener('blur', () => {
         if (!fanContactInput.value.trim()) return;
         const msg = validateContactValue(fanContactInput.value);
         fanContactInput.setCustomValidity(msg);
         fanContactError.textContent = msg;
+        syncAriaInvalid(fanContactInput);
       });
 
       fanContactInput?.addEventListener('input', () => {
         fanContactInput.setCustomValidity('');
         fanContactError.textContent = '';
+        if (fanContactInput.hasAttribute('aria-invalid')) syncAriaInvalid(fanContactInput);
       });
 
-      inlineNotifyForm?.addEventListener('submit', (e) => {
+      spotifyNotifyForm?.addEventListener('submit', (e) => {
         e.preventDefault();
         const contactVal = fanContactInput.value.trim();
         const errorMsg = validateContactValue(contactVal);
@@ -1292,6 +1238,7 @@
         if (errorMsg) {
           fanContactInput.setCustomValidity(errorMsg);
           fanContactError.textContent = errorMsg;
+          syncAriaInvalid(fanContactInput);
           fanContactInput.focus();
           return;
         }
@@ -1300,10 +1247,10 @@
 
         const entry = {
           id: 'sub_' + Date.now(),
-          name: 'VIP Fan',
+          name: 'Spotify Fan',
           contact: contactVal,
           kind: contactVal.includes('@') ? 'email' : 'phone',
-          source: activeNotifySource,
+          source: 'Spotify Button',
           ts: Date.now()
         };
 
@@ -1331,13 +1278,13 @@
           }).catch(() => {});
         }
 
-        inlineNotifyForm.reset();
-        inlineFormContainer.hidden = true;
-        inlineSuccessContainer.hidden = false;
+        spotifyNotifyForm.reset();
+        spotifyFormContainer.hidden = true;
+        spotifySuccessContainer.hidden = false;
       });
 
       // =========================================================
-      // PRIVATE 24H ANALYTICS & VIP SUBSCRIBER VAULT
+      // PRIVATE 24H ANALYTICS & SPOTIFY SUBSCRIBER VAULT
       // =========================================================
       const statsModal = document.getElementById('statsModal');
       const visits24hCount = document.getElementById('visits24hCount');
@@ -1406,14 +1353,14 @@
           </div>
         `).join('');
 
-        // Render VIP Subscribers safely using DOM nodes
+        // Render Spotify Notify Subscribers safely using DOM nodes
         vipSubscribersCount.textContent = String(subscribers.length);
         vipSubscribersList.replaceChildren();
 
         if (!subscribers.length) {
           const emptyEl = document.createElement('div');
           emptyEl.className = 'vip-empty';
-          emptyEl.textContent = 'No drop alert sign-ups yet.';
+          emptyEl.textContent = 'No Spotify sign-ups yet.';
           vipSubscribersList.appendChild(emptyEl);
           return;
         }
@@ -1432,7 +1379,7 @@
           const metaEl = document.createElement('span');
           metaEl.className = 'vip-meta';
           const dateStr = sub.ts ? new Date(sub.ts).toLocaleDateString() : '';
-          metaEl.textContent = `${sub.source || 'Drop Alert'}${dateStr ? ' • ' + dateStr : ''}`;
+          metaEl.textContent = `${sub.source || 'Spotify Button'}${dateStr ? ' • ' + dateStr : ''}`;
 
           left.appendChild(contactEl);
           left.appendChild(metaEl);
@@ -1441,7 +1388,7 @@
         });
       }
 
-      // Copy all contacts for SMS Sender ID blast (e.g. Arkesel / Hubtel / Twilio)
+      // Copy all contacts
       document.getElementById('copyVipNumbersBtn')?.addEventListener('click', async (e) => {
         const btn = e.currentTarget;
         if (!latestSubscribers.length) {
@@ -1459,14 +1406,14 @@
         setTimeout(() => { btn.textContent = 'Copy Contacts'; }, 1800);
       });
 
-      // Export VIP Subscribers as CSV
+      // Export contacts as CSV
       document.getElementById('exportVipCsvBtn')?.addEventListener('click', () => {
         if (!latestSubscribers.length) return;
         const header = 'Contact,Type,Source,Date\n';
         const rows = latestSubscribers.map((s) => {
           const safeContact = '"' + String(s.contact || '').replace(/"/g, '""') + '"';
           const safeType = '"' + String(s.kind || 'phone').replace(/"/g, '""') + '"';
-          const safeSource = '"' + String(s.source || 'Drop Alert').replace(/"/g, '""') + '"';
+          const safeSource = '"' + String(s.source || 'Spotify Button').replace(/"/g, '""') + '"';
           const safeDate = '"' + (s.ts ? new Date(s.ts).toISOString() : '') + '"';
           return [safeContact, safeType, safeSource, safeDate].join(',');
         }).join('\n');
@@ -1475,7 +1422,7 @@
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'eakoma-vip-drop-list.csv';
+        a.download = 'eakoma-spotify-notify-list.csv';
         document.body.appendChild(a);
         a.click();
         a.remove();
