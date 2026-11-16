@@ -26,6 +26,7 @@
       --text-muted: rgba(226, 232, 240, 0.62);
 
       --spotify-green: #1ed760;
+      --whatsapp-green: #25d366;
       --audiomack-orange: #ffa200;
       --youtube-red: #ff0033;
       --instagram-pink: #ff3377;
@@ -394,11 +395,54 @@
 
     /* Brand Accent Colors */
     .icon-spotify { color: var(--spotify-green); }
+    .icon-whatsapp { color: var(--whatsapp-green); }
     .icon-audiomack { color: var(--audiomack-orange); }
     .icon-youtube { color: var(--youtube-red); }
     .icon-instagram { color: var(--instagram-pink); }
     .icon-tiktok { color: var(--tiktok-cyan); }
     .icon-facebook { color: var(--facebook-blue); }
+
+    /* Featured VIP WhatsApp Channel CTA */
+    .link-btn.vip-whatsapp {
+      background: linear-gradient(135deg, rgba(37, 211, 102, 0.13) 0%, rgba(15, 17, 23, 0.88) 55%, rgba(212, 175, 55, 0.14) 100%);
+      border: 1px solid rgba(37, 211, 102, 0.48);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5), 0 0 24px rgba(37, 211, 102, 0.14);
+    }
+
+    .link-btn.vip-whatsapp:hover {
+      background: linear-gradient(135deg, rgba(37, 211, 102, 0.2) 0%, rgba(24, 27, 36, 0.95) 55%, rgba(212, 175, 55, 0.22) 100%);
+      border-color: var(--whatsapp-green);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.65), 0 0 28px rgba(37, 211, 102, 0.28);
+    }
+
+    .link-btn.vip-whatsapp .link-icon {
+      background: rgba(37, 211, 102, 0.14);
+      border-color: rgba(37, 211, 102, 0.35);
+    }
+
+    .link-btn.vip-whatsapp:hover .link-icon {
+      background: rgba(37, 211, 102, 0.24);
+    }
+
+    .link-right-group {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex-shrink: 0;
+    }
+
+    .badge-vip {
+      background: linear-gradient(135deg, rgba(251, 238, 164, 0.2) 0%, rgba(212, 175, 55, 0.28) 100%);
+      color: var(--gold-light);
+      border: 1px solid rgba(232, 201, 122, 0.5);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.68rem;
+      border-radius: 999px;
+      flex-shrink: 0;
+    }
 
     .arrow-icon {
       width: 19px;
@@ -834,7 +878,7 @@
     <header class="profile-header">
       <div class="avatar-wrap">
         <div class="avatar-ring">
-          <img src="hero.jpg" alt="Eakoma Official Profile Picture" class="avatar-img" fetchpriority="high">
+          <img src="hero.jpg" alt="Eakoma Official Profile Picture" class="avatar-img" width="215" height="215" fetchpriority="high">
         </div>
       </div>
 
@@ -864,9 +908,33 @@
     </header>
 
     <!-- 2. STREAMING & SOCIAL ACTION LINKS (NO EXTRA CARDS ABOVE) -->
-    <nav class="links-list" aria-label="Official Streaming and Social Links">
+    <main>
+      <nav class="links-list" aria-label="Official Streaming and Social Links">
 
-      <div class="section-label"><span>Listen &amp; Watch</span></div>
+        <div class="section-label"><span>VIP Fan Community</span></div>
+
+        <!-- 0. Join My VIP WhatsApp Channel (Direct Fan Access) -->
+        <a href="https://whatsapp.com/channel/0029VbCGwupFsn0gh8l3cI0O" target="_blank" rel="noopener noreferrer" class="link-btn vip-whatsapp" data-link="VIP WhatsApp Channel">
+          <div class="link-left">
+            <div class="link-icon icon-whatsapp">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.359 5l-1.422 5.031 5.156-1.359c1.469.797 3.141 1.234 4.875 1.234 5.516 0 9.969-4.453 9.969-9.969S17.547 2 12.031 2zm5.828 14.125c-.25.703-1.438 1.344-2.016 1.438-.516.078-1.188.125-1.922-.109-.453-.141-1.031-.328-1.766-.641-3.094-1.344-5.109-4.469-5.266-4.672-.156-.203-1.266-1.688-1.266-3.219s.797-2.281 1.078-2.594c.281-.313.625-.391.828-.391.203 0 .406.016.594.016.188.016.438-.078.688.516.25.609.859 2.094.938 2.25.078.156.125.344.031.547-.094.203-.141.328-.297.5-.156.172-.313.391-.453.516-.156.141-.313.313-.141.609.172.297.766 1.266 1.641 2.047 1.125 1.016 2.078 1.328 2.375 1.484.297.156.469.125.641-.078.172-.203.75-.875.953-1.172.203-.297.406-.25.688-.156.281.094 1.766.828 2.063.984.297.156.5.234.578.359.078.125.078.734-.172 1.438z"/>
+              </svg>
+            </div>
+            <div class="link-text">
+              <span class="link-label">Join Our VIP WhatsApp Channel</span>
+              <span class="link-hint">Direct fan access, exclusives &amp; connect with me</span>
+            </div>
+          </div>
+          <div class="link-right-group">
+            <span class="badge-vip">VIP</span>
+            <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <div class="section-label"><span>Listen &amp; Watch</span></div>
 
       <!-- 1. Spotify (Coming Soon — Opens Notify Option ONLY When Clicked) -->
       <button type="button" class="link-btn coming-soon" id="spotifyNotifyBtn" data-link="Spotify">
@@ -976,7 +1044,8 @@
         </svg>
       </a>
 
-    </nav>
+      </nav>
+    </main>
 
     <!-- 3. FOOTER -->
     <footer>
@@ -1075,7 +1144,7 @@
       const STORAGE_KEY = 'eakoma_simple_24h_v1';
       const SUBS_STORAGE_KEY = 'eakoma_vip_subscribers_v1';
       const DAY_MS = 24 * 60 * 60 * 1000;
-      const LINKS = ['Spotify', 'Audiomack', 'YouTube', 'Instagram', 'TikTok', 'Facebook'];
+      const LINKS = ['VIP WhatsApp Channel', 'Spotify', 'Audiomack', 'YouTube', 'Instagram', 'TikTok', 'Facebook'];
 
       // Fallback for browsers without native <dialog closedby="any"> support (e.g. Safari)
       if (!('closedBy' in HTMLDialogElement.prototype)) {
