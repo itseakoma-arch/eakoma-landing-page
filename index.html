@@ -1143,8 +1143,45 @@
     (function () {
       const STORAGE_KEY = 'eakoma_simple_24h_v1';
       const SUBS_STORAGE_KEY = 'eakoma_vip_subscribers_v1';
+      const RESET_TS_KEY = 'eakoma_stats_reset_ts_v1';
+      const NTFY_TOPIC = 'eakoma-trackstar-alerts';
       const DAY_MS = 24 * 60 * 60 * 1000;
       const LINKS = ['VIP WhatsApp Channel', 'Spotify', 'Audiomack', 'YouTube', 'Instagram', 'TikTok', 'Facebook'];
+
+      function detectDeviceLabel() {
+        const ua = navigator.userAgent || '';
+        if (/iPhone/i.test(ua)) return 'iPhone';
+        if (/iPad/i.test(ua)) return 'iPad';
+        if (/Android/i.test(ua)) return 'Android Phone';
+        if (/Macintosh/i.test(ua)) return 'Mac';
+        if (/Windows/i.test(ua)) return 'Windows PC';
+        return 'Device';
+      }
+
+      function getUrlRefTag() {
+        try {
+          const params = new URLSearchParams(window.location.search);
+          const ref = params.get('ref') || params.get('tel') || params.get('v') || params.get('id');
+          return ref ? ` • Ref: ${ref}` : '';
+        } catch (e) {
+          return '';
+        }
+      }
+
+      function sendNtfyAlert(title, message, priority = 'default', tags = 'musical_note,eyes') {
+        try {
+          fetch(`https://ntfy.sh/${NTFY_TOPIC}`, {
+            method: 'POST',
+            headers: {
+              'Title': title,
+              'Priority': priority,
+              'Tags': tags
+            },
+            body: `${message} • (${detectDeviceLabel()}${getUrlRefTag()})`,
+            keepalive: true
+          }).catch(() => {});
+        } catch (e) {}
+      }
 
       // Fallback for browsers without native <dialog closedby="any"> support (e.g. Safari)
       if (!('closedBy' in HTMLDialogElement.prototype)) {
@@ -1204,34 +1241,62 @@
       }
 
       function recordVisit() {
-        if (location.protocol === 'file:') return;
+        if (location.hash === '#stats') return;
         if (sessionStorage.getItem('eakoma_visited_session') === '1') return;
         sessionStorage.setItem('eakoma_visited_session', '1');
 
+        const now = Date.now();
         const store = getStore();
-        store.visits.push(Date.now());
+        store.visits.push(now);
         saveStore(store);
 
-        fetch('/api/analytics', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ type: 'pageview', ts: Date.now() }),
-          keepalive: true
-        }).catch(() => {});
+        sendNtfyAlert(
+          'Eakoma Page Visited',
+          "Someone just opened Eakoma's official artist page!",
+          'default',
+          'eyes,musical_note'
+        );
+
+        if (location.protocol !== 'file:') {
+          fetch('/api/analytics', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ type: 'pageview', ts: now }),
+            keepalive: true
+          }).catch(() => {});
+        }
       }
 
       function recordClick(name) {
-        if (location.protocol === 'file:') return;
+        const now = Date.now();
         const store = getStore();
-        store.clicks.push({ name, ts: Date.now() });
+        store.clicks.push({ name, ts: now });
         saveStore(store);
 
-        fetch('/api/analytics', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ type: 'click', linkName: name, ts: Date.now() }),
-          keepalive: true
-        }).catch(() => {});
+        if (name === 'VIP WhatsApp Channel') {
+          sendNtfyAlert(
+            'VIP WhatsApp Channel Clicked!',
+            'A fan just tapped Join Our TRACKSTARS VIP WhatsApp Channel!',
+            'urgent',
+            'fire,iphone'
+          );
+        } else {
+          sendNtfyAlert(
+            `Eakoma Link Clicked: ${name}`,
+            `A fan just tapped ${name} on Eakoma's page!`,
+            'high',
+            'headphones,rocket'
+          );
+        }
+
+        if (location.protocol !== 'file:') {
+          fetch('/api/analytics', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ type: 'click', linkName: name, ts: now }),
+            keepalive: true
+          }).catch(() => {});
+        }
       }
 
       recordVisit();
@@ -1332,6 +1397,13 @@
 
         if (spotifyBadgeText) spotifyBadgeText.textContent = 'Notified ✓';
 
+        sendNtfyAlert(
+          'New Spotify VIP Sign-Up!',
+          `New fan contact: ${entry.contact}`,
+          'urgent',
+          'star,tada'
+        );
+
         if (location.protocol.startsWith('http')) {
           fetch('/api/analytics', {
             method: 'POST',
@@ -1376,10 +1448,81 @@
         return merged.sort((a, b) => (b.ts || 0) - (a.ts || 0));
       }
 
+      async function fetchNtfy24hData(cutoff) {
+        try {
+          const res = await fetch(`https://ntfy.sh/${NTFY_TOPIC}/json?poll=1&since=24h`, {
+            cache: 'no-store'
+          });
+          if (!res.ok) return null;
+          const text = await res.text();
+          const lines = text.split('\n').map((l) => l.trim()).filter(Boolean);
+          const visits = [];
+          const clicks = [];
+          const subscribers = [];
+
+          lines.forEach((line) => {
+            try {
+              const item = JSON.parse(line);
+              if (!item || item.event !== 'message') return;
+              const ts = (item.time || 0) * 1000;
+              if (ts < cutoff) return;
+              const title = String(item.title || '');
+              const msg = String(item.message || '');
+
+              if (title === 'Eakoma Page Visited') {
+                visits.push(ts);
+              } else if (title === 'VIP WhatsApp Channel Clicked!') {
+                clicks.push({ name: 'VIP WhatsApp Channel', ts });
+              } else if (title.startsWith('Eakoma Link Clicked: ')) {
+                const linkName = title.replace('Eakoma Link Clicked: ', '').trim();
+                if (linkName) clicks.push({ name: linkName, ts });
+              } else if (title === 'New Spotify VIP Sign-Up!') {
+                const match = msg.match(/New fan contact:\s*([^\s•]+)/i);
+                if (match && match[1]) {
+                  const contact = match[1].trim();
+                  subscribers.push({
+                    id: 'ntfy_' + (item.id || ts),
+                    name: 'Spotify Fan',
+                    contact,
+                    kind: contact.includes('@') ? 'email' : 'phone',
+                    source: 'Spotify Button',
+                    ts
+                  });
+                }
+              }
+            } catch (e) {}
+          });
+
+          return { visits, clicks, subscribers };
+        } catch (e) {
+          return null;
+        }
+      }
+
       async function openStats() {
-        const cutoff = Date.now() - DAY_MS;
+        const resetTs = Number(localStorage.getItem(RESET_TS_KEY) || 0);
+        const cutoff = Math.max(Date.now() - DAY_MS, resetTs);
         const store = getStore();
         const localSubs = getSubscribers();
+
+        statsModal.showModal();
+
+        const localVisits = store.visits.filter((ts) => ts >= cutoff);
+        const localClicks = store.clicks.filter((c) => c.ts >= cutoff);
+
+        // Render immediate local state first while syncing live ntfy data
+        latestSubscribers = mergeSubscribers(localSubs, []);
+        renderStats(localVisits.length, localClicks, latestSubscribers);
+
+        const ntfyData = await fetchNtfy24hData(cutoff);
+        if (ntfyData) {
+          const totalVisits = Math.max(localVisits.length, ntfyData.visits.length);
+          const mergedClicks = ntfyData.clicks.length >= localClicks.length ? ntfyData.clicks : localClicks;
+          latestSubscribers = mergeSubscribers(localSubs, ntfyData.subscribers);
+          saveSubscribers(latestSubscribers);
+          renderStats(totalVisits, mergedClicks, latestSubscribers);
+          return;
+        }
 
         if (location.protocol.startsWith('http')) {
           try {
@@ -1387,23 +1530,19 @@
             if (res.ok) {
               const data = await res.json();
               if (data && Array.isArray(data.events)) {
-                const visits = data.events.filter((e) => e.type === 'pageview' && e.ts >= cutoff);
-                const clicks = data.events.filter((e) => e.type === 'click' && e.ts >= cutoff);
+                const apiVisits = data.events.filter((e) => e.type === 'pageview' && e.ts >= cutoff);
+                const apiClicks = data.events.filter((e) => e.type === 'click' && e.ts >= cutoff);
                 latestSubscribers = mergeSubscribers(localSubs, data.subscribers);
                 saveSubscribers(latestSubscribers);
-                renderStats(visits.length, clicks, latestSubscribers);
-                statsModal.showModal();
-                return;
+                renderStats(
+                  Math.max(localVisits.length, apiVisits.length),
+                  apiClicks.length >= localClicks.length ? apiClicks : localClicks,
+                  latestSubscribers
+                );
               }
             }
           } catch (e) {}
         }
-
-        const recentVisits = store.visits.filter((ts) => ts >= cutoff).length;
-        const recentClicks = store.clicks.filter((c) => c.ts >= cutoff);
-        latestSubscribers = mergeSubscribers(localSubs, []);
-        renderStats(recentVisits, recentClicks, latestSubscribers);
-        statsModal.showModal();
       }
 
       function renderStats(visitCount, clickEvents, subscribers) {
@@ -1521,6 +1660,9 @@
 
       document.getElementById('closeStatsBtn')?.addEventListener('click', () => statsModal.close());
       document.getElementById('resetStatsBtn')?.addEventListener('click', () => {
+        try {
+          localStorage.setItem(RESET_TS_KEY, String(Date.now()));
+        } catch (e) {}
         saveStore({ visits: [], clicks: [] });
         renderStats(0, [], latestSubscribers);
       });
