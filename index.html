@@ -402,7 +402,43 @@
     .icon-tiktok { color: var(--tiktok-cyan); }
     .icon-facebook { color: var(--facebook-blue); }
 
-    /* Featured VIP WhatsApp Channel CTA */
+    /* Featured Royal Family WhatsApp Group & VIP WhatsApp Channel CTAs */
+    .link-btn.royal-family-whatsapp {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.22) 0%, rgba(15, 17, 23, 0.9) 52%, rgba(37, 211, 102, 0.16) 100%);
+      border: 1px solid rgba(255, 215, 0, 0.62);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.58), 0 0 26px rgba(212, 175, 55, 0.22);
+    }
+
+    .link-btn.royal-family-whatsapp:hover {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.3) 0%, rgba(24, 27, 36, 0.96) 52%, rgba(37, 211, 102, 0.24) 100%);
+      border-color: var(--gold-bright);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 215, 0, 0.35);
+    }
+
+    .link-btn.royal-family-whatsapp .link-icon {
+      background: rgba(212, 175, 55, 0.18);
+      border-color: rgba(255, 215, 0, 0.45);
+      color: var(--gold-bright);
+    }
+
+    .link-btn.royal-family-whatsapp:hover .link-icon {
+      background: rgba(212, 175, 55, 0.28);
+    }
+
+    .badge-royal {
+      background: linear-gradient(135deg, #fbeea4 0%, #d4af37 55%, #b58922 100%);
+      color: #06070a;
+      border: 1px solid rgba(255, 215, 0, 0.8);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.68rem;
+      border-radius: 999px;
+      flex-shrink: 0;
+      box-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
+    }
+
     .link-btn.vip-whatsapp {
       background: linear-gradient(135deg, rgba(37, 211, 102, 0.13) 0%, rgba(15, 17, 23, 0.88) 55%, rgba(212, 175, 55, 0.14) 100%);
       border: 1px solid rgba(37, 211, 102, 0.48);
@@ -913,7 +949,28 @@
 
         <div class="section-label"><span>VIP Fan Community</span></div>
 
-        <!-- 0. Join My VIP WhatsApp Channel (Direct Fan Access) -->
+        <!-- 0A. Join The ROYAL FAMILY WhatsApp Group (Warriors of the LORD) -->
+        <a href="https://chat.whatsapp.com/B5RDvB4dZuEKAXDeu41TVC?mode=gi_t" target="_blank" rel="noopener noreferrer" class="link-btn royal-family-whatsapp" data-link="Royal Family WhatsApp Group">
+          <div class="link-left">
+            <div class="link-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
+              </svg>
+            </div>
+            <div class="link-text">
+              <span class="link-label">Join The ROYAL FAMILY WhatsApp Group</span>
+              <span class="link-hint">Warriors of the LORD &bull; Connect, grow &amp; fellowship together</span>
+            </div>
+          </div>
+          <div class="link-right-group">
+            <span class="badge-royal">Royal</span>
+            <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- 0B. Join Our TRACKSTARS VIP WhatsApp Channel (Direct Fan Access) -->
         <a href="https://whatsapp.com/channel/0029VbCGwupFsn0gh8l3cI0O" target="_blank" rel="noopener noreferrer" class="link-btn vip-whatsapp" data-link="VIP WhatsApp Channel">
           <div class="link-left">
             <div class="link-icon icon-whatsapp">
@@ -1146,7 +1203,7 @@
       const RESET_TS_KEY = 'eakoma_stats_reset_ts_v1';
       const NTFY_TOPIC = 'eakoma-trackstar-alerts';
       const DAY_MS = 24 * 60 * 60 * 1000;
-      const LINKS = ['VIP WhatsApp Channel', 'Spotify', 'Audiomack', 'YouTube', 'Instagram', 'TikTok', 'Facebook'];
+      const LINKS = ['Royal Family WhatsApp Group', 'VIP WhatsApp Channel', 'Spotify', 'Audiomack', 'YouTube', 'Instagram', 'TikTok', 'Facebook'];
 
       function detectDeviceLabel() {
         const ua = navigator.userAgent || '';
@@ -1273,7 +1330,14 @@
         store.clicks.push({ name, ts: now });
         saveStore(store);
 
-        if (name === 'VIP WhatsApp Channel') {
+        if (name === 'Royal Family WhatsApp Group') {
+          sendNtfyAlert(
+            'Royal Family WhatsApp Group Clicked!',
+            'A Warrior of the LORD just tapped Join The ROYAL FAMILY WhatsApp Group!',
+            'urgent',
+            'crown,fire'
+          );
+        } else if (name === 'VIP WhatsApp Channel') {
           sendNtfyAlert(
             'VIP WhatsApp Channel Clicked!',
             'A fan just tapped Join Our TRACKSTARS VIP WhatsApp Channel!',
@@ -1471,6 +1535,8 @@
 
               if (title === 'Eakoma Page Visited') {
                 visits.push(ts);
+              } else if (title === 'Royal Family WhatsApp Group Clicked!') {
+                clicks.push({ name: 'Royal Family WhatsApp Group', ts });
               } else if (title === 'VIP WhatsApp Channel Clicked!') {
                 clicks.push({ name: 'VIP WhatsApp Channel', ts });
               } else if (title.startsWith('Eakoma Link Clicked: ')) {
